@@ -1,0 +1,44 @@
+Subject: [announce] CCTemplate revision 0.1d0
+
+			    CCTemplate
+			    ==========
+
+
+This  package  installs  a  C  language  library  implementing  a
+template library.
+
+  The package makes use of the  GNU Autotools and it is tested on
+a  GNU+Linux system.   It is  distributed under  the  GNU General
+Public License version 3.0.
+
+  The  latest version  of  this package  can  be downloaded  from
+Github:
+
+     <http://github.com/marcomaggi/cctemplate/downloads>
+
+the home page of the CCTemplate project is at:
+
+       <http://marcomaggi.github.com/cctemplate.html>
+
+development takes place at:
+
+	 <http://github.com/marcomaggi/cctemplate/>
+
+the documentation is available online:
+
+     <http://marcomaggi.github.com/docs/cctemplate.html>
+
+
+Notes for revision 0.1d0
+------------------------
+
+*
+
+
+### end of file
+# Local Variables:
+# mode: text
+# coding: utf-8-unix
+# fill-column: 65
+# paragraph-start: "*"
+# End:
