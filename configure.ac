@@ -1,19 +1,20 @@
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ(2.68)
+AC_PREREQ(2.69)
 AC_INIT([CCTemplate],[0.1d0],[marco.maggi-ipsu@poste.it],
   [cctemplate],[http://marcomaggi.github.com/cctemplate.html])
 AC_CANONICAL_TARGET
-AM_INIT_AUTOMAKE
-LT_PREREQ([2.4.2])
-LT_INIT
 AC_CONFIG_SRCDIR([src/])
 AC_CONFIG_MACRO_DIR([m4])
 AM_INIT_AUTOMAKE
 
+AM_PROG_AR
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
+
+LT_PREREQ([2.4.2])
+LT_INIT
 
 #page
 #### interface version
@@ -41,6 +42,7 @@ AC_SUBST([cctemplate_VERSION_INTERFACE_AGE])
 #### basic system inspection
 
 AC_LANG([C])
+dnl AC_DEFINE([_GNU_SOURCE],[1],[enable everything GNU])
 AC_PROG_CC_C99
 AM_PROG_AS
 AC_PROG_CC

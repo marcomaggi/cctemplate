@@ -4,12 +4,7 @@
 
 set -xe
 
-autoreconf --install --verbose
-
-# libtoolize
-# aclocal
-# autoheader
-# automake --foreign --add-missing
-# autoconf
+autoreconf --warnings=all --install --verbose
+# --force
 
 ### end of file
