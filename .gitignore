@@ -41,4 +41,4 @@ missing
 mkinstalldirs
 ltmain.sh
 m4/
-
+meta/autotools

@@ -1,6 +1,6 @@
 ## Process this file with automake to produce Makefile.in
 
-AM_CFLAGS="-Wall"
+AM_CFLAGS		= -Wall
 
 cctemplate_CURRENT	= @cctemplate_VERSION_INTERFACE_CURRENT@
 cctemplate_REVISION	= @cctemplate_VERSION_INTERFACE_REVISION@

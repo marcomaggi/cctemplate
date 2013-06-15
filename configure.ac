@@ -1,19 +1,25 @@
-# Process this file with autoconf to produce a configure script.
+dnl @configure_input@
+dnl
 
-AC_PREREQ(2.69)
+AC_PREREQ([2.69])
 AC_INIT([CCTemplate],[0.1d0],[marco.maggi-ipsu@poste.it],
-  [cctemplate],[http://marcomaggi.github.com/cctemplate.html])
-AC_CANONICAL_TARGET
+  [cctemplate],[http://marcomaggi.github.com/cctemplate])
 AC_CONFIG_SRCDIR([src/])
-AC_CONFIG_MACRO_DIR([m4])
-AM_INIT_AUTOMAKE
+AC_CONFIG_MACRO_DIR([meta/autotools])
+AC_CONFIG_AUX_DIR([meta/autotools])
+AC_CANONICAL_BUILD
+AC_CANONICAL_HOST
+AC_CANONICAL_TARGET
+AM_INIT_AUTOMAKE([-Wall foreign dist-xz no-dist-gzip])
+AM_MAINTAINER_MODE
 
 AM_PROG_AR
 AC_PROG_INSTALL
 AC_PROG_LN_S
 AC_PROG_MAKE_SET
+AC_PROG_MKDIR_P
 
-LT_PREREQ([2.4.2])
+LT_PREREQ([2.4])
 LT_INIT
 
 #page
