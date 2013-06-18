@@ -108,7 +108,8 @@ AC_CONFIG_FILES([Makefile]
    [src/Makefile]
    [doc/Makefile]
    [tests/Makefile]
-   [meta/scripts/cctemplate.pc])
+   [meta/scripts/cctemplate.pc]
+   [meta/slackware/slack-desc])
 AC_OUTPUT
 
 ### end of file
