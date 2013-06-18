@@ -33,7 +33,7 @@
 
 @c To be used as @value{COPYRIGHT_YEARS} whenever we need to include the
 @c list of copyright years.
-@set COPYRIGHT_YEARS            2012
+@set COPYRIGHT_YEARS            2012, 2013
 
 @c page
 @c ------------------------------------------------------------
@@ -138,7 +138,7 @@ searching for the installed library with the @gnu{} Autotools, we can
 just add the following macro use to @file{configure.ac}:
 
 @example
-PKG_CHECK_MODULES([CCTEMPLATE],[cctemplate >= 0.1d0])
+PKG_CHECK_MODULES([CCTEMPLATE],[cctemplate >= 0.1])
 @end example
 
 @noindent

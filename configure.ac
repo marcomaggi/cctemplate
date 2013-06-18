@@ -108,7 +108,6 @@ AC_CONFIG_FILES([Makefile]
    [src/Makefile]
    [doc/Makefile]
    [tests/Makefile]
-   [meta/scripts/cctemplate-config]
    [meta/scripts/cctemplate.pc])
 AC_OUTPUT
 
