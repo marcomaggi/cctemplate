@@ -103,7 +103,10 @@ dnl AC_CACHE_SAVE
 #### finish
 
 AC_CONFIG_HEADERS([config.h])
-AC_CONFIG_FILES(Makefile src/Makefile doc/Makefile tests/Makefile)
+AC_CONFIG_FILES([Makefile]
+   [src/Makefile]
+   [doc/Makefile]
+   [tests/Makefile])
 AC_OUTPUT
 
 ### end of file
