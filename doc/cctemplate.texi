@@ -135,7 +135,7 @@ prefixed with @code{cct_} and suffixed with @code{_t}.
 
 This package installs a data file for @command{pkg-config}, so when
 searching for the installed library with the @gnu{} Autotools, we can
-use the following macros in @file{configure.ac}:
+just add the following macro use to @file{configure.ac}:
 
 @example
 PKG_CHECK_MODULES([CCTEMPLATE],[cctemplate >= 0.1d0])

@@ -4,6 +4,7 @@ dnl
 AC_PREREQ([2.69])
 AC_INIT([CCTemplate],[0.1d0],[marco.maggi-ipsu@poste.it],
   [cctemplate],[http://marcomaggi.github.com/cctemplate])
+AC_SUBST([MY_PKG_CONFIG_VERSION],[0.1])
 AC_CONFIG_SRCDIR([src/])
 AC_CONFIG_MACRO_DIR([meta/autotools])
 AC_CONFIG_AUX_DIR([meta/autotools])

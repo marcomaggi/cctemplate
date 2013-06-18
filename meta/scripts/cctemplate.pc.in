@@ -1,6 +1,3 @@
-PACKAGE_NAME=@PACKAGE_NAME@
-PACKAGE_VERSION=@PACKAGE_VERSION@
-
 prefix=@prefix@
 exec_prefix=@exec_prefix@
 
@@ -21,9 +18,9 @@ sysconfdir=@sysconfdir@
 
 ## ------------------------------------------------------------
 
-Name: ${PACKAGE_NAME}
+Name: @PACKAGE_NAME@
 Description: template C library
-Version: ${PACKAGE_VERSION}
+Version: @MY_PKG_CONFIG_VERSION@
 Libs: -L${libdir} -lcctemplate
 Cflags: -I${includedir}
 
