@@ -7,4 +7,7 @@ AM_CPPFLAGS	= -I$(top_srcdir)/src
 LDADD		= ../src/libcctemplate.la
 TESTS		= $(check_PROGRAMS)
 
+installcheck-local: $(TESTS)
+	@for f in $(TESTS); do $(builddir)/$$f; done
+
 ### end of file

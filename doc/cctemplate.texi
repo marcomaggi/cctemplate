@@ -134,8 +134,23 @@ the constant names are prefixed with @code{CCT_}; all the type names are
 prefixed with @code{cct_} and suffixed with @code{_t}.
 
 This package installs a data file for @command{pkg-config}, so when
-searching for the installed library with the @gnu{} Autotools, we can
-just add the following macro use to @file{configure.ac}:
+searching for the installed library with the @gnu{} Autotools, we can:
+
+@itemize
+@item
+Install the file @file{pkg.m4} from @file{/usr/share/aclocal} into the
+source tree of the package, for example under @file{meta/autotools/}.
+
+@item
+Include @file{pkg.m4} in the template by adding the following line to
+@file{acinclude.m4}:
+
+@example
+m4_include(meta/autotools/pkg.m4)
+@end example
+
+@item
+Just add the following macro use to @file{configure.ac}:
 
 @example
 PKG_CHECK_MODULES([CCTEMPLATE],[cctemplate >= 0.1])
@@ -143,7 +158,10 @@ PKG_CHECK_MODULES([CCTEMPLATE],[cctemplate >= 0.1])
 
 @noindent
 which will set the variables @code{CCTEMPLATE_LIBS} and
-@code{CCTEMPLATE_CFLAGS}.  Alternatively:
+@code{CCTEMPLATE_CFLAGS}.
+@end itemize
+
+Alternatively we can use the raw @gnu{} Autoconf macros:
 
 @example
 AC_CHECK_LIB([cctemplate],[cct_version_string],,
