@@ -133,14 +133,23 @@ All the function names in the @api{} are prefixed with @code{cct_}; all
 the constant names are prefixed with @code{CCT_}; all the type names are
 prefixed with @code{cct_} and suffixed with @code{_t}.
 
-When searching for the installed library with the @gnu{} Autotools, we
-can use the following macros in @file{configure.ac}:
+This package installs a data file for @command{pkg-config}, so when
+searching for the installed library with the @gnu{} Autotools, we can
+use the following macros in @file{configure.ac}:
+
+@example
+PKG_CHECK_MODULES([CCTEMPLATE],[cctemplate >= 0.1d0])
+@end example
+
+@noindent
+which will set the variables @code{CCTEMPLATE_LIBS} and
+@code{CCTEMPLATE_CFLAGS}.  Alternatively:
 
 @example
 AC_CHECK_LIB([cctemplate],[cct_version_string],,
   [AC_MSG_FAILURE([test for CCTemplate library failed])])
 AC_CHECK_HEADERS([cctemplate.h],,
-  [AC_MSG_ERROR([test for CCTemplate header failed])])
+  [AC_MSG_FAILURE([test for CCTemplate header failed])])
 @end example
 
 @c page
