@@ -82,10 +82,14 @@ AC_CACHE_SAVE
 #page
 #### external libraries
 
+dnl AX_PTHREAD(,[AC_MSG_ERROR([cannot find pthread library],[1])])
+
+dnl PKG_CHECK_MODULES([GSL],[gsl >= 1.16],[gsl=yes],[gsl=no])
+dnl GSL_CPPFLAGS=$(pkg-config gsl --cflags)
+dnl GSL_LDFLAGS=$(pkg-config gsl --libs)
+
 dnl AC_CHECK_HEADERS([gmp.h],,[AC_MSG_ERROR([Cannot find libgmp.])])
 dnl AC_CHECK_LIB([gmp],[__gmpn_add],,[AC_MSG_ERROR([Cannot find libgmp.])])
-
-dnl AX_PTHREAD(,[AC_MSG_ERROR([cannot find pthread library],[1])])
 
 dnl AC_CACHE_SAVE
 
