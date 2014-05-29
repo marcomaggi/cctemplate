@@ -11,7 +11,7 @@ AC_CONFIG_AUX_DIR([meta/autotools])
 AC_CANONICAL_BUILD
 AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
-AM_INIT_AUTOMAKE([-Wall foreign dist-xz no-dist-gzip])
+AM_INIT_AUTOMAKE([-Wall foreign dist-xz no-dist-gzip subdir-objects])
 AM_MAINTAINER_MODE
 
 AM_PROG_AR
@@ -24,26 +24,10 @@ LT_PREREQ([2.4])
 LT_INIT
 
 #page
-#### interface version
+#### libraries interface version
 
-cctemplate_VERSION_INTERFACE_CURRENT=0
-cctemplate_VERSION_INTERFACE_REVISION=0
-cctemplate_VERSION_INTERFACE_AGE=0
-AC_DEFINE_UNQUOTED([cctemplate_VERSION_INTERFACE_CURRENT],
-  [$cctemplate_VERSION_INTERFACE_CURRENT],
-  [current interface number])
-AC_DEFINE_UNQUOTED([cctemplate_VERSION_INTERFACE_REVISION],
-  [$cctemplate_VERSION_INTERFACE_REVISION],
-  [current interface implementation number])
-AC_DEFINE_UNQUOTED([cctemplate_VERSION_INTERFACE_AGE],
-  [$cctemplate_VERSION_INTERFACE_AGE],
-  [current interface age number])
-AC_DEFINE_UNQUOTED([cctemplate_VERSION_INTERFACE_STRING],
-  ["$cctemplate_VERSION_INTERFACE_CURRENT.$cctemplate_VERSION_INTERFACE_REVISION"],
-  [library interface version])
-AC_SUBST([cctemplate_VERSION_INTERFACE_CURRENT])
-AC_SUBST([cctemplate_VERSION_INTERFACE_REVISION])
-AC_SUBST([cctemplate_VERSION_INTERFACE_AGE])
+MM_LIBTOOL_LIBRARY_VERSIONS([cctemplate],0,0,0)
+
 
 #page
 #### basic system inspection
@@ -74,10 +58,13 @@ AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
 
-dnl CCTEMPLATE_CHECK_PAGESIZE
-dnl AC_DEFINE_UNQUOTED([CCG_PAGESIZE],[$cctemplate_cv_pagesize],[Platform page size.])
-dnl CCTEMPLATE_CHECK_PAGESHIFT($cctemplate_cv_pagesize)
-dnl AC_DEFINE_UNQUOTED([CCG_PAGESHIFT],[$cctemplate_cv_pageshift],[Page shift bit count.])
+dnl MM_CHECK_PAGESIZE
+dnl AC_DEFINE_UNQUOTED([CCG_PAGESIZE],[$MM_cv_pagesize],[Platform page size.])
+dnl MM_CHECK_PAGESHIFT($mm_cv_pagesize)
+dnl AC_DEFINE_UNQUOTED([CCG_PAGESHIFT],[$MM_cv_pageshift],[Page shift bit count.])
+
+dnl AC_LANG([C++])
+dnl AC_PROG_CXX
 
 AC_CACHE_SAVE
 
@@ -98,16 +85,34 @@ AC_CACHE_SAVE
 dnl AC_CHECK_HEADERS([gmp.h],,[AC_MSG_ERROR([Cannot find libgmp.])])
 dnl AC_CHECK_LIB([gmp],[__gmpn_add],,[AC_MSG_ERROR([Cannot find libgmp.])])
 
+dnl AX_PTHREAD(,[AC_MSG_ERROR([cannot find pthread library],[1])])
+
 dnl AC_CACHE_SAVE
+
+#page
+#### operating system specific configuration
+
+dnl case "$target_os" in
+dnl   *linux*)
+dnl     ;;
+dnl   *bsd*)
+dnl     ;;
+dnl   *cygwin*)
+dnl     ;;
+dnl   *darwin*)
+dnl     cctemplate_OS_DARWIN=yes
+dnl     ;;
+dnl esac
+dnl AM_CONDITIONAL([WANT_LINUX], [test "x$cctemplate_OS_LINUX"  = xyes])
+dnl AM_CONDITIONAL([WANT_BSD],   [test "x$cctemplate_OS_BSD"    = xyes])
+dnl AM_CONDITIONAL([WANT_CYGWIN],[test "x$cctemplate_OS_CYGWIN" = xyes])
+dnl AM_CONDITIONAL([WANT_DARWIN],[test "x$cctemplate_OS_DARWIN" = xyes])
 
 #page
 #### finish
 
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([Makefile]
-   [src/Makefile]
-   [doc/Makefile]
-   [tests/Makefile]
    [meta/scripts/cctemplate.pc]
    [meta/slackware/slack-desc])
 AC_OUTPUT
