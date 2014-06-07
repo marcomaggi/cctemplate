@@ -2,16 +2,16 @@ dnl @configure_input@
 dnl
 
 AC_PREREQ([2.69])
-AC_INIT([CCTemplate],[0.1d0],[marco.maggi-ipsu@poste.it],
+AC_INIT([CCTemplate],[0.1d0],
+  [marco.maggi-ipsu@poste.it],
   [cctemplate],[http://marcomaggi.github.com/cctemplate])
-AC_SUBST([MY_PKG_CONFIG_VERSION],[0.1])
 AC_CONFIG_SRCDIR([src/])
 AC_CONFIG_MACRO_DIR([meta/autotools])
 AC_CONFIG_AUX_DIR([meta/autotools])
 AC_CANONICAL_BUILD
 AC_CANONICAL_HOST
 AC_CANONICAL_TARGET
-AM_INIT_AUTOMAKE([-Wall foreign dist-xz no-dist-gzip subdir-objects])
+AM_INIT_AUTOMAKE([foreign dist-xz no-dist-gzip subdir-objects])
 AM_MAINTAINER_MODE
 
 AM_PROG_AR
@@ -23,13 +23,15 @@ AC_PROG_MKDIR_P
 LT_PREREQ([2.4])
 LT_INIT
 
-#page
+dnl page
 #### libraries interface version
+
+dnl This is the version stored in the pkg-config data file.
+AC_SUBST([MY_PKG_CONFIG_VERSION],[0.1])
 
 MM_LIBTOOL_LIBRARY_VERSIONS([cctemplate],0,0,0)
 
-
-#page
+dnl page
 #### basic system inspection
 
 AC_LANG([C])
@@ -68,7 +70,7 @@ dnl AC_PROG_CXX
 
 AC_CACHE_SAVE
 
-#page
+dnl page
 #### checks for library functions
 
 AC_FUNC_MALLOC
@@ -79,7 +81,7 @@ dnl AC_CHECK_FUNCS([getenv])
 
 AC_CACHE_SAVE
 
-#page
+dnl page
 #### external libraries
 
 dnl AX_PTHREAD(,[AC_MSG_ERROR([cannot find pthread library],[1])])
@@ -93,7 +95,7 @@ dnl AC_CHECK_LIB([gmp],[__gmpn_add],,[AC_MSG_ERROR([Cannot find libgmp.])])
 
 dnl AC_CACHE_SAVE
 
-#page
+dnl page
 #### operating system specific configuration
 
 dnl case "$target_os" in
@@ -112,7 +114,7 @@ dnl AM_CONDITIONAL([WANT_BSD],   [test "x$cctemplate_OS_BSD"    = xyes])
 dnl AM_CONDITIONAL([WANT_CYGWIN],[test "x$cctemplate_OS_CYGWIN" = xyes])
 dnl AM_CONDITIONAL([WANT_DARWIN],[test "x$cctemplate_OS_DARWIN" = xyes])
 
-#page
+dnl page
 #### finish
 
 AC_CONFIG_HEADERS([config.h])
@@ -124,5 +126,5 @@ AC_OUTPUT
 ### end of file
 # Local Variables:
 # mode: autoconf
-# page-delimiter: "^#page"
+# page-delimiter: "^dnl page"
 # End:
