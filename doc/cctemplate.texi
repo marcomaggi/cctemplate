@@ -146,14 +146,14 @@ searching for the installed library with the @gnu{} Autotools, we can:
 @itemize
 @item
 Install the file @file{pkg.m4} from @file{/usr/share/aclocal} into the
-source tree of the package, for example under @file{meta/autotools/}.
+source tree of the package, for example under @file{meta/autoconf/}.
 
 @item
 Include @file{pkg.m4} in the template by adding the following line to
 @file{acinclude.m4}:
 
 @example
-m4_include(meta/autotools/pkg.m4)
+m4_include(meta/autoconf/pkg.m4)
 @end example
 
 @item
