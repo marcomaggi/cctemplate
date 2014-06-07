@@ -27,9 +27,9 @@ dnl page
 #### libraries interface version
 
 dnl This is the version stored in the pkg-config data file.
-AC_SUBST([MY_PKG_CONFIG_VERSION],[0.1])
+AC_SUBST([CCTEMPLATE_PKG_CONFIG_VERSION],[0.1])
 
-MM_LIBTOOL_LIBRARY_VERSIONS([cctemplate],0,0,0)
+MM_LIBTOOL_LIBRARY_VERSIONS([cctemplate],1,0,0)
 
 dnl page
 #### basic system inspection
