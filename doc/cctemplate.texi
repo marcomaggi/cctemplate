@@ -33,7 +33,23 @@
 
 @c To be used as @value{COPYRIGHT_YEARS} whenever we need to include the
 @c list of copyright years.
-@set COPYRIGHT_YEARS            2012, 2013, 2014
+@set COPYRIGHT_YEARS            2012-2015
+
+@c ------------------------------------------------------------
+
+@set GITHUB_URL                 @url{http://github.com/marcomaggi/@value{PACKAGE_NICKNAME}}
+@set BITBUCKET_URL              @url{https://bitbucket.org/marcomaggi/@value{PACKAGE_NICKNAME}}
+@set DOWNLOAD_URL               @url{https://bitbucket.org/marcomaggi/@value{PACKAGE_NICKNAME}/downloads}
+@set DOCUMENTATION_URL          @url{http://marcomaggi.github.io/docs/@value{PACKAGE_NICKNAME}.html}
+@set VICARE_HOMEPAGE_URL        @url{http://marcomaggi.github.io/vicare.html}
+
+@macro templateref{NODE, TITLE}
+@xref{\NODE\,\TITLE\,\TITLE\,template}
+@end macro
+
+@macro template{}
+@acronym{TEMPLATE}
+@end macro
 
 @c page
 @c ------------------------------------------------------------
@@ -42,9 +58,24 @@
 
 @copying
 This document describes version @value{VERSION} of @value{PACKAGE}, a C
-language library implementing a template library.  The package is
-distributed under the terms of the @gnu{} General Public License
-(@gpl{}).
+language library implementing a template library.
+
+The package is distributed under the terms of the @gnu{} General Public
+License (@gpl{}).
+
+The latest release can be downloaded from:
+
+@center @value{DOWNLOAD_URL}
+
+@noindent
+development takes place at:
+
+@center @value{GITHUB_URL}
+
+@noindent
+and as backup at:
+
+@center @value{BITBUCKET_URL}
 
 @noindent
 Copyright @copyright{} @value{COPYRIGHT_YEARS} by @value{AUTHOR} @value{AUTHOR_EMAIL}

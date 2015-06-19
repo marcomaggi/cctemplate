@@ -11,13 +11,9 @@ library.
 GNU+Linux  system.   It is  distributed  under  the GNU  General  Public
 License version 3.0.
 
-  The latest version of this package can be downloaded from:
+  The latest release of this package can be downloaded from:
 
-	  <http://sourceforge.net/projects/cctemplate/files/>
-
-the home page of the CCTemplate project is at:
-
-	     <http://marcomaggi.github.com/cctemplate.html>
+	<https://bitbucket.org/marcomaggi/cctemplate/downloads>
 
 development takes place at:
 
@@ -25,7 +21,7 @@ development takes place at:
 
 and as backup at:
 
-	     <http://sourceforge.net/projects/cctemplate/>
+	     <https://bitbucket.org/marcomaggi/cctemplate/>
 
 the documentation is available online:
 
