@@ -137,7 +137,6 @@ Appendices
 
 * Package License::             GNU General Public License.
 * Documentation License::       GNU Free Documentation License.
-* resources::                   On--line resources.
 * references::                  Bibliography and references.
 
 Indexes
@@ -247,35 +246,6 @@ Return an integer representing the library interface current age.
 
 @include gpl-3.0.texi
 @include fdl-1.3.texi
-
-@c page
-@node resources
-@appendix On--line resources
-
-
-The latest version of this package can be downloaded from:
-
-@center @url{http://sourceforge.net/projects/@value{PACKAGE_NICKNAME}/files/}
-
-@noindent
-the home page of the @value{PACKAGE} project is at:
-
-@center @url{http://marcomaggi.github.com/@value{PACKAGE_NICKNAME}.html}
-
-@noindent
-development takes place at:
-
-@center @url{http://github.com/marcomaggi/@value{PACKAGE_NICKNAME}/}
-
-@noindent
-and as backup at:
-
-@center @url{http://sourceforge.net/projects/@value{PACKAGE_NICKNAME}/}
-
-@noindent
-the documentation is available online:
-
-@center @url{http://marcomaggi.github.com/docs/@value{PACKAGE_NICKNAME}.html}
 
 @c page
 @node references
