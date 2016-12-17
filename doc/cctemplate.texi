@@ -33,7 +33,7 @@
 
 @c To be used as @value{COPYRIGHT_YEARS} whenever we need to include the
 @c list of copyright years.
-@set COPYRIGHT_YEARS            2012-2015
+@set COPYRIGHT_YEARS            2012-2016
 
 @c ------------------------------------------------------------
 
@@ -170,33 +170,15 @@ prefixed with @code{cct_} and suffixed with @code{_t}.
 @section Linking code with the library
 
 
-This package installs a data file for @command{pkg-config}, so when
-searching for the installed library with the @gnu{} Autotools, we can:
-
-@itemize
-@item
-Install the file @file{pkg.m4} from @file{/usr/share/aclocal} into the
-source tree of the package, for example under @file{meta/autoconf/}.
-
-@item
-Include @file{pkg.m4} in the template by adding the following line to
-@file{acinclude.m4}:
-
-@example
-m4_include(meta/autoconf/pkg.m4)
-@end example
-
-@item
-Just add the following macro use to @file{configure.ac}:
+This package installs a data file for @command{pkg-config}, so when searching for the installed
+library with the @gnu{} Autotools, we can add the following macro use to @file{configure.ac}:
 
 @example
 PKG_CHECK_MODULES([CCTEMPLATE],[cctemplate >= 0.1])
 @end example
 
 @noindent
-which will set the variables @code{CCTEMPLATE_LIBS} and
-@code{CCTEMPLATE_CFLAGS}.
-@end itemize
+which will set the variables @code{CCTEMPLATE_LIBS} and @code{CCTEMPLATE_CFLAGS}.
 
 Alternatively we can use the raw @gnu{} Autoconf macros:
 
