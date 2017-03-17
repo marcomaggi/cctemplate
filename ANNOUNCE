@@ -1,3 +1,4 @@
+-*- coding: utf-8-unix -*-
 Subject: [announce] CCTemplate revision 0.1d0
 
 			    CCTemplate
@@ -36,7 +37,6 @@ Notes for revision 0.1d0
 
 ### end of file
 # Local Variables:
-# coding: utf-8-unix
 # mode: text
 # fill-column: 72
 # paragraph-start: "*"
