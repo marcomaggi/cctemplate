@@ -7,7 +7,7 @@ AC_INIT([CCTemplate],[0.1d0],
   [cctemplate],[http://marcomaggi.github.com/cctemplate])
 dnl This is the revision number of this configure.ac
 AC_REVISION([0.1])
-AC_COPYRIGHT([Copyright (c) 2016 Marco Maggi <marco.maggi-ipsu@poste.it>
+AC_COPYRIGHT([Copyright (c) 2016, 2017 Marco Maggi <marco.maggi-ipsu@poste.it>
 
 This program is free software: you  can redistribute it and/or modify it
 under the  terms of the GNU  General Public License as  published by the
@@ -52,8 +52,10 @@ dnl page
 #### basic system inspection
 
 AC_LANG([C])
-dnl AC_DEFINE([_GNU_SOURCE],[1],[enable everything GNU])
 AC_PROG_CC_C99
+dnl AX_CHECK_COMPILE_FLAG([-std=c11],[],[AC_MSG_ERROR([*** Compiler does not support -std=c11])],[-pedantic])
+dnl AX_CFLAGS="-std=c11"
+dnl AC_SUBST(AX_CFLAGS)
 AM_PROG_AS
 AC_PROG_CC
 AM_PROG_CC_C_O
