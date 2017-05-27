@@ -1,6 +1,6 @@
 # cctemplate
 
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/939/badge)](https://bestpractices.coreinfrastructure.org/projects/939)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/XXX/badge)](https://bestpractices.coreinfrastructure.org/projects/XXX)
 [![Build Status](https://travis-ci.org/marcomaggi/cctemplate.svg?branch=master)](https://travis-ci.org/marcomaggi/cctemplate)
 [![Coverity passed](https://scan.coverity.com/projects/12593/badge.svg)](https://scan.coverity.com/projects/marcomaggi-cctemplate)
 [![codecov](https://codecov.io/gh/marcomaggi/cctemplate/branch/master/graph/badge.svg)](https://codecov.io/gh/marcomaggi/cctemplate)
