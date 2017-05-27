@@ -9,11 +9,9 @@
 
 # About compiler  selection.  We  select the compiler  we want  with the
 # "compiler" key.   This should set  the environment variable CC  to the
-# associated compiler  executable; I am  not sure that it  actually does
-# it.  Example:  selecting "gcc-7" as  compiler causes  CC to be  set to
-# "gcc",  but is  it the  correct executable?   I think  not!  For  this
-# reason I explicitly  select the compiler by setting CC  on the command
-# line of "configure".  (Marco Maggi; May 27, 2017)
+# associated compiler executable; I have  verified that it actually does
+# so when  the language is C.   I am not  sure that it actually  does it
+# when the language is C++.
 
 # About  dependency  packages.   We install  dependency  packages  under
 # "/tmp/mine".  So we need the following in every script:
@@ -63,12 +61,12 @@ matrix:
       # install:
       #   - ./meta/travis-ci/install-some-dependency.sh
       script: |
-        echo CC=$CC; $CC --version;
+        #echo CC=$CC; $CC --version;
         export PATH=/tmp/mine/bin:$PATH;
         export LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
         export PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
         sh ./autogen.sh;
-        ./configure --enable-maintainer-mode CC=/usr/bin/gcc-5;
+        ./configure --enable-maintainer-mode;
         make all;
         make check;
 
@@ -86,12 +84,12 @@ matrix:
       # install:
       #   - ./meta/travis-ci/install-some-dependency.sh
       script: |
-        echo CC=$CC; $CC --version;
+        #echo CC=$CC; $CC --version;
         export PATH=/tmp/mine/bin:$PATH;
         export LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
         export PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
         sh ./autogen.sh;
-        ./configure --enable-maintainer-mode CC=/usr/bin/gcc-6;
+        ./configure --enable-maintainer-mode;
         make all;
         make check;
 
@@ -109,12 +107,12 @@ matrix:
       # install:
       #   - ./meta/travis-ci/install-some-dependency.sh
       script: |
-        echo CC=$CC; $CC --version;
+        #echo CC=$CC; $CC --version;
         export PATH=/tmp/mine/bin:$PATH;
         export LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
         export PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
         sh ./autogen.sh;
-        ./configure --enable-maintainer-mode CC=/usr/bin/gcc-7;
+        ./configure --enable-maintainer-mode;
         make all;
         make check;
 
@@ -132,7 +130,7 @@ matrix:
       # install:
       #   - ./meta/travis-ci/install-some-dependency.sh
       script: |
-        echo CC=$CC; $CC --version;
+        #echo CC=$CC; $CC --version;
         echo CXX=$CXX; $CXX --version;
         export PATH=/tmp/mine/bin:$PATH;
         export LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
@@ -150,7 +148,7 @@ matrix:
       # install:
       #   - ./meta/travis-ci/install-some-dependency.sh
       script: |
-        echo CC=$CC; $CC --version;
+        #echo CC=$CC; $CC --version;
         export PATH=/tmp/mine/bin:$PATH;
         export LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
         export PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
@@ -167,7 +165,7 @@ matrix:
       # install:
       #   - ./meta/travis-ci/install-some-dependency.sh
       script: |
-        echo CC=$CC; $CC --version;
+        #echo CC=$CC; $CC --version;
         export PATH=/tmp/mine/bin:$PATH;
         export LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
         export PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
@@ -190,12 +188,12 @@ matrix:
       # install:
       #   - ./meta/travis-ci/install-some-dependency.sh
       script: |
-        echo CC=$CC; $CC --version;
+        #echo CC=$CC; $CC --version;
         export PATH=/tmp/mine/bin:$PATH;
         export LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
         export PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
         sh ./autogen.sh;
-        ./configure --enable-maintainer-mode CC=/usr/bin/gcc-7 CFLAGS='-O0 --coverage';
+        ./configure --enable-maintainer-mode CFLAGS='-O0 --coverage';
         make all;
         make check;
       after_success:
