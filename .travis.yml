@@ -11,7 +11,7 @@
 # "compiler" key.   This should set  the environment variable CC  to the
 # associated compiler executable; I have  verified that it actually does
 # so when  the language is C.   I am not  sure that it actually  does it
-# when the language is C++.
+# when the language is C++.  (Marco Maggi; May 27, 2017)
 
 # About  dependency  packages.   We install  dependency  packages  under
 # "/tmp/mine".  So we need the following in every script:
