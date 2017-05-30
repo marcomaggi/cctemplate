@@ -155,10 +155,9 @@ Indexes
 This document describes version @value{VERSION} of @value{PACKAGE}, a C
 language library implementing a template library.
 
-@value{PACKAGE} installs the single header file @file{cctemplate.h}.
-All the function names in the @api{} are prefixed with @code{cct_}; all
-the constant names are prefixed with @code{CCT_}; all the type names are
-prefixed with @code{cct_} and suffixed with @code{_t}.
+@value{PACKAGE} installs the single header file @file{cctemplate.h}.  All the function names in the
+@api{} are prefixed with @code{cct_}; all the preprocessor symbol names are prefixed with
+@code{CCT_}; all the type names are prefixed with @code{cct_} and suffixed with @code{_t}.
 
 @menu
 * overview linking::            Linking code with the library.
