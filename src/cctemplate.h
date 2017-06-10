@@ -57,15 +57,15 @@ extern "C" {
 #if defined _WIN32 || defined __CYGWIN__
 #  ifdef BUILDING_DLL
 #    ifdef __GNUC__
-#      define cctemplate_decl		__attribute__((dllexport))
+#      define cctemplate_decl		__attribute__((dllexport)) extern
 #    else
-#      define cctemplate_decl		__declspec(dllexport)
+#      define cctemplate_decl		__declspec(dllexport) extern
 #    endif
 #  else
 #    ifdef __GNUC__
-#      define cctemplate_decl		__attribute__((dllimport))
+#      define cctemplate_decl		__attribute__((dllimport)) extern
 #    else
-#      define cctemplate_decl		__declspec(dllimport)
+#      define cctemplate_decl		__declspec(dllimport) extern
 #    endif
 #  endif
 #  define cctemplate_private_decl	extern
