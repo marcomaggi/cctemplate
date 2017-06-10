@@ -71,8 +71,8 @@ extern "C" {
 #  define cctemplate_private_decl	extern
 #else
 #  if __GNUC__ >= 4
-#    define cctemplate_decl		__attribute__((visibility ("default")))
-#    define cctemplate_private_decl	__attribute__((visibility ("hidden")))
+#    define cctemplate_decl		__attribute__((visibility ("default"))) extern
+#    define cctemplate_private_decl	__attribute__((visibility ("hidden")))  extern
 #  else
 #    define cctemplate_decl		extern
 #    define cctemplate_private_decl	extern
