@@ -115,7 +115,14 @@ $ make install
 
 ## Usage
 
-Read the documentation.
+Read the documentation generated from  the Texinfo sources.  The package
+installs the documentation  in Info format; we can  generate and install
+documentation in HTML format by running:
+
+```
+$ make html
+$ make install-html
+```
 
 
 ## Credits
