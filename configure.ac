@@ -55,12 +55,20 @@ dnl page
 #### basic system inspection
 
 AC_LANG([C])
+dnl AC_PROG_CC
 AC_PROG_CC_C99
-dnl AX_CHECK_COMPILE_FLAG([-std=c11],[],[AC_MSG_ERROR([*** Compiler does not support -std=c11])],[-pedantic])
+AX_CHECK_COMPILE_FLAG([-std=c11],[],[AC_MSG_ERROR([*** Compiler does not support -std=c11])],[-pedantic])
+
+AS_VAR_SET(AX_CFLAGS)
 dnl AX_CFLAGS="-std=c11"
-dnl AC_SUBST(AX_CFLAGS)
+AS_VAR_APPEND(AX_CFLAGS,[" -Wall -Wextra"])
+AX_GCC_VERSION
+AS_IF([test "x$GCC" = "xyes"],
+  [AS_CASE("$GCC_VERSION",
+     [7.*],[AS_VAR_APPEND(AX_CFLAGS,[" -pedantic -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict -Wnull-dereference -Wjump-misses-init -Wdouble-promotion -Wshadow -Wformat=2 -Wmisleading-indentation"])])])
+AC_SUBST(AX_CFLAGS)
+
 AM_PROG_AS
-AC_PROG_CC
 AM_PROG_CC_C_O
 AC_HEADER_STDC
 AC_HEADER_SYS_WAIT
@@ -120,17 +128,11 @@ dnl AC_CACHE_SAVE
 dnl page
 #### operating system specific configuration
 
-dnl case "$target_os" in
-dnl   *linux*)
-dnl     ;;
-dnl   *bsd*)
-dnl     ;;
-dnl   *cygwin*)
-dnl     ;;
-dnl   *darwin*)
-dnl     cctemplate_OS_DARWIN=yes
-dnl     ;;
-dnl esac
+dnl AS_CASE("$target_os",
+dnl   [*linux*],[],
+dnl   [*bsd*],[],
+dnl   [*cygwin*],[],
+dnl   [*darwin*],[cctemplate_OS_DARWIN=yes])
 dnl AM_CONDITIONAL([WANT_LINUX], [test "x$cctemplate_OS_LINUX"  = xyes])
 dnl AM_CONDITIONAL([WANT_BSD],   [test "x$cctemplate_OS_BSD"    = xyes])
 dnl AM_CONDITIONAL([WANT_CYGWIN],[test "x$cctemplate_OS_CYGWIN" = xyes])
