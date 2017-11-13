@@ -43,7 +43,7 @@ extern "C" {
    int unused_variable CCTEMPLATE_UNUSED;
 */
 #ifdef __GNUC__
-#  define CCTEMPLATE_UNUSED		__attribute__((unused))
+#  define CCTEMPLATE_UNUSED		__attribute__((__unused__))
 #else
 #  define CCTEMPLATE_UNUSED		/* empty */
 #endif
@@ -57,13 +57,13 @@ extern "C" {
 #if defined _WIN32 || defined __CYGWIN__
 #  ifdef BUILDING_DLL
 #    ifdef __GNUC__
-#      define cctemplate_decl		__attribute__((dllexport)) extern
+#      define cctemplate_decl		__attribute__((__dllexport__)) extern
 #    else
 #      define cctemplate_decl		__declspec(dllexport) extern
 #    endif
 #  else
 #    ifdef __GNUC__
-#      define cctemplate_decl		__attribute__((dllimport)) extern
+#      define cctemplate_decl		__attribute__((__dllimport__)) extern
 #    else
 #      define cctemplate_decl		__declspec(dllimport) extern
 #    endif
@@ -71,8 +71,8 @@ extern "C" {
 #  define cctemplate_private_decl	extern
 #else
 #  if __GNUC__ >= 4
-#    define cctemplate_decl		__attribute__((visibility ("default"))) extern
-#    define cctemplate_private_decl	__attribute__((visibility ("hidden")))  extern
+#    define cctemplate_decl		__attribute__((__visibility__("default"))) extern
+#    define cctemplate_private_decl	__attribute__((__visibility__("hidden")))  extern
 #  else
 #    define cctemplate_decl		extern
 #    define cctemplate_private_decl	extern
