@@ -105,10 +105,11 @@ extern "C" {
 
 
 /** --------------------------------------------------------------------
- ** Constants.
+ ** Constants and preprocessor macros.
  ** ----------------------------------------------------------------- */
 
-
+#define CCTEMPLATE_PC(POINTER_TYPE, POINTER_NAME, EXPRESSION)	\
+  POINTER_TYPE * POINTER_NAME = (POINTER_TYPE *) (EXPRESSION)
 
 
 /** --------------------------------------------------------------------

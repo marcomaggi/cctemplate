@@ -131,6 +131,7 @@ entitled ``@gnu{} Free Documentation License''.
 @menu
 * overview::                    Overview of the package.
 * version::                     Version functions.
+* utils::                       Utility definitions.
 
 Appendices
 
@@ -218,6 +219,47 @@ number.
 @deftypefun int cct_version_interface_age (void)
 Return an integer representing the library interface current age.
 @end deftypefun
+
+@c page
+@node utils
+@chapter Utility definitions
+
+
+@defmac CCTEMPLATE_PC (@var{POINTER_TYPE}, @var{POINTER_NAME}, @var{EXPRESSION})
+Preprocessor macro used to define pointer variables initialised with a cast expression.  It expands
+to:
+
+@example
+POINTER_TYPE * POINTER_NAME = (POINTER_TYPE *) (EXPRESSION)
+@end example
+
+For example, the macro use:
+
+@example
+CCTEMPLATE_PC(cctemplate_descriptor_test_failure_t, C, _C);
+@end example
+
+@noindent
+expands into:
+
+@example
+cctemplate_descriptor_test_failure_t * C = \
+   (cctemplate_descriptor_test_failure_t *) (_C);
+@end example
+@end defmac
+
+
+@defmac CCTEMPLATE_UNUSED
+Preprocessor macro that is meant to expand into an attribute declaration.  If the symbol
+@code{__GNUC__} is defined, the expansion is:
+
+@example
+__attribute__((__unused__))
+@end example
+
+@noindent
+otherwise the expansion is the empty string.
+@end defmac
 
 @c page
 @c ------------------------------------------------------------
