@@ -7,7 +7,7 @@
 
 
 
-  Copyright (C) 2012, 2014 Marco Maggi <marco.maggi-ipsu@poste.it>
+  Copyright (C) 2012, 2014, 2017 Marco Maggi <marco.maggi-ipsu@poste.it>
 
   This program is  free software: you can redistribute  it and/or modify
   it under the  terms of the GNU General Public  License as published by
@@ -31,7 +31,7 @@
 #include "cctemplate-internals.h"
 
 
-const char *
+char const *
 cct_version_string (void)
 {
   return cctemplate_VERSION_INTERFACE_STRING;

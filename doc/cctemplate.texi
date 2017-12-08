@@ -199,7 +199,7 @@ The installed libraries follow version numbering as established by the
 system, libtool, Shared library support for @gnu{}}.
 
 
-@deftypefun {const char *} cct_version_string (void)
+@deftypefun {char const *} cct_version_string (void)
 Return a pointer to a statically allocated @asciiz{} string representing
 the interface version number.
 @end deftypefun

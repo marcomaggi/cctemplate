@@ -116,7 +116,7 @@ extern "C" {
  ** Version functions.
  ** ----------------------------------------------------------------- */
 
-cctemplate_decl const char *	cct_version_string		(void);
+cctemplate_decl char const *	cct_version_string		(void);
 cctemplate_decl int		cct_version_interface_current	(void);
 cctemplate_decl int		cct_version_interface_revision	(void);
 cctemplate_decl int		cct_version_interface_age	(void);
