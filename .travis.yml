@@ -92,7 +92,7 @@ env:
 #### build scripts
 
 before_script:
-  # On Linux the GNU libtool  preparation script is called "libtoolize",
+  # On Linux the GNU Libtool  preparation script is called "libtoolize",
   # while on OS X it is called "glibtoolize".
   - if test "$TRAVIS_OS_NAME" = osx ; then export LIBTOOLIZE=glibtoolize; else true; fi
   - sh ./autogen.sh;
