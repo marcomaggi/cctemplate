@@ -81,10 +81,6 @@ env:
     - PATH=/tmp/mine/bin:$PATH;
     - LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
     - PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
-  # On Linux the GNU libtool  preparation script is called "libtoolize",
-  # while on OS X it is called "glibtoolize".
-  os: osx
-    - LIBTOOLIZE=glibtoolize
 
 #page
 #### dependencies management
@@ -94,6 +90,12 @@ env:
 
 #page
 #### build scripts
+
+matrix:
+  - os: osx
+    # On Linux the GNU libtool preparation script is called
+    # "libtoolize", while on OS X it is called "glibtoolize".
+    env: LIBTOOLIZE=glibtoolize
 
 before_script:
   - sh ./autogen.sh;
