@@ -76,7 +76,7 @@ git:
 branches:
   only:
     - master
-    - coverity_scan
+#    - coverity_scan
 
 env:
   global:
@@ -92,7 +92,7 @@ env:
 #### Coverity Scan integration
 
 before_install:
-  - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+  - if test "$TRAVIS_OS_NAME" != osx ; then echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-; else true; fi
 
 addons:
   coverity_scan:
@@ -100,6 +100,15 @@ addons:
       name: "marcomaggi/cctemplate"
       description: "Build submitted via Travis CI"
     notification_email: marco.maggi-ipsu@poste.it
+    # To run the scan we want to execute the following commands:
+    #
+    #   sh ./autogen.sh
+    #   ./configure --enable-maintainer-mode
+    #   make clean
+    #   cov-build make all
+    #
+    # so we put the preparation in "build_command_prepend:" and the
+    # making in "build_command:".
     build_command_prepend: "sh ./autogen.sh; ./configure --enable-maintainer-mode; make clean"
     build_command: "make all"
     branch_pattern: coverity_scan
