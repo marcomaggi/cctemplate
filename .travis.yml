@@ -58,8 +58,10 @@
 #page
 #### global configuration
 
-sudo: false
 language: c
+
+# We need sudo for Coverity Scan.
+sudo: true
 
 # Let's just look at the project's dashboard at Travis CI's site.
 #
@@ -74,6 +76,7 @@ git:
 branches:
   only:
     - master
+    - coverity_scan
 
 env:
   global:
@@ -81,6 +84,10 @@ env:
     - PATH=/tmp/mine/bin:$PATH;
     - LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
     - PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "f5cEoLUmV/glyFtKYR2oBnU8X0KmNEg3mVjeK9UTXqs/hZoT94o2eVzPsg9wi/MnQf/pBo1aq9o2svJFh+FOJqz9wmzYK8zcWGxkJT9cUoBGLElbMdDdVQWd9JfIhiI9ZxReiADrpG60Axkfng3W1zoubiRByqYkrhIY2scSVu0dILpoagTHPE6WscdlHQa96fTxoVmpGBVcr1Kjg9+CqQMXmVjUroTXsKwoFvQkBNzbl6n7WGpW0n8HStTpnr78xt+2f8ZR+o01g3gfWpu7520LoewLi165h3PBcUqOReSdA487NFzS1OvbXY20nXAC362sdoHhwY1fStgMlVqmUJc8Bhheep/UHgqgdaivqVe5JQJe85y71HdlEJk9ZLW8Ig/LabpDNZ6c3lOqVFBIpcJRC6s7UEC0E2t6x7vPPZby5V0VUrun48NUb7P8JLM81VZPnIO3vnL741NKPtlY2655tZQ69X9vaTUraUGhUaK1ztvBgw/P/031Uzs4mxlEj3RgPmvhphIuTpsqzHIW4n4yV6uZ10PpTAHB+X6KZvzsEz0IhL3t9h9dAtxUOrvSXRaO0nVwGBrti+kIfgOkApHPR5UXKdD6QyyGYbc4yZ+qCLkfDYyF9fSannBH4q8SV6tFLctZwZzCheIP3yx4FwyTbYtj53B0cYVoP3a8DVc="
+
 
 #page
 #### dependencies management
@@ -104,6 +111,9 @@ matrix:
     # Plain build under Ubuntu GNU+Linux "trusty", GCC 5.
     - os: linux
       dist: trusty
+      branches:
+        only:
+          - master
       compiler: gcc-5
       addons:
         apt:
@@ -120,6 +130,9 @@ matrix:
     # Plain build under Ubuntu GNU+Linux "trusty", GCC 6.
     - os: linux
       dist: trusty
+      branches:
+        only:
+          - master
       compiler: gcc-6
       addons:
         apt:
@@ -136,6 +149,9 @@ matrix:
     # Plain build under Ubuntu GNU+Linux "trusty", GCC 7.
     - os: linux
       dist: trusty
+      branches:
+        only:
+          - master
       compiler: gcc-7
       addons:
         apt:
@@ -153,6 +169,9 @@ matrix:
     # selected by Travis CI.
     - os: linux
       dist: trusty
+      branches:
+        only:
+          - master
       addons:
         apt:
           sources:
@@ -169,6 +188,9 @@ matrix:
     # Travis CI.
     - os: osx
       osx_image: xcode7.3
+      branches:
+        only:
+          - master
       compiler: clang
       script: |
         ./configure --enable-maintainer-mode;
@@ -179,6 +201,9 @@ matrix:
     # Travis CI.
     - os: osx
       osx_image: xcode8.3
+      branches:
+        only:
+          - master
       compiler: clang
       script: |
         ./configure --enable-maintainer-mode;
@@ -188,6 +213,9 @@ matrix:
     # Codecov support under Ubuntu GNU+Linux "trusty", GCC 7.
     - os: linux
       dist: trusty
+      branches:
+        only:
+          - master
       compiler: gcc-7
       addons:
         apt:
@@ -202,6 +230,38 @@ matrix:
         make check;
       after_success:
         bash <(curl -s https://codecov.io/bash) -xgcov-7
+
+    # Coverity Scan support under Ubuntu GNU+Linux "trusty", GCC 7.
+    - os: linux
+      dist: trusty
+      branches:
+        only:
+          - coverity_scan
+      compiler: gcc-7
+      before_install:
+            - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - texinfo
+            - gcc-7
+        coverity_scan:
+          project:
+            name: "marcomaggi/cctemplate"
+            description: "Build submitted via Travis CI"
+          notification_email: marco.maggi-ipsu@poste.it
+          build_command_prepend: |
+            sh ./autogen.sh;
+            ./configure --enable-maintainer-mode;
+            make clean
+          build_command: "make all"
+          branch_pattern: coverity_scan
+      # script: |
+      #   ./configure --enable-maintainer-mode;
+      #   make all;
+      #   make check;
 
 #page
 #### done
