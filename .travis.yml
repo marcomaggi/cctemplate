@@ -84,9 +84,9 @@ env:
     - PATH=/tmp/mine/bin:$PATH;
     - LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
     - PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
-   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-   #   via the "travis encrypt" command using the project repo's public key
-   - secure: "f5cEoLUmV/glyFtKYR2oBnU8X0KmNEg3mVjeK9UTXqs/hZoT94o2eVzPsg9wi/MnQf/pBo1aq9o2svJFh+FOJqz9wmzYK8zcWGxkJT9cUoBGLElbMdDdVQWd9JfIhiI9ZxReiADrpG60Axkfng3W1zoubiRByqYkrhIY2scSVu0dILpoagTHPE6WscdlHQa96fTxoVmpGBVcr1Kjg9+CqQMXmVjUroTXsKwoFvQkBNzbl6n7WGpW0n8HStTpnr78xt+2f8ZR+o01g3gfWpu7520LoewLi165h3PBcUqOReSdA487NFzS1OvbXY20nXAC362sdoHhwY1fStgMlVqmUJc8Bhheep/UHgqgdaivqVe5JQJe85y71HdlEJk9ZLW8Ig/LabpDNZ6c3lOqVFBIpcJRC6s7UEC0E2t6x7vPPZby5V0VUrun48NUb7P8JLM81VZPnIO3vnL741NKPtlY2655tZQ69X9vaTUraUGhUaK1ztvBgw/P/031Uzs4mxlEj3RgPmvhphIuTpsqzHIW4n4yV6uZ10PpTAHB+X6KZvzsEz0IhL3t9h9dAtxUOrvSXRaO0nVwGBrti+kIfgOkApHPR5UXKdD6QyyGYbc4yZ+qCLkfDYyF9fSannBH4q8SV6tFLctZwZzCheIP3yx4FwyTbYtj53B0cYVoP3a8DVc="
+    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+    #   via the "travis encrypt" command using the project repo's public key
+    - secure: "f5cEoLUmV/glyFtKYR2oBnU8X0KmNEg3mVjeK9UTXqs/hZoT94o2eVzPsg9wi/MnQf/pBo1aq9o2svJFh+FOJqz9wmzYK8zcWGxkJT9cUoBGLElbMdDdVQWd9JfIhiI9ZxReiADrpG60Axkfng3W1zoubiRByqYkrhIY2scSVu0dILpoagTHPE6WscdlHQa96fTxoVmpGBVcr1Kjg9+CqQMXmVjUroTXsKwoFvQkBNzbl6n7WGpW0n8HStTpnr78xt+2f8ZR+o01g3gfWpu7520LoewLi165h3PBcUqOReSdA487NFzS1OvbXY20nXAC362sdoHhwY1fStgMlVqmUJc8Bhheep/UHgqgdaivqVe5JQJe85y71HdlEJk9ZLW8Ig/LabpDNZ6c3lOqVFBIpcJRC6s7UEC0E2t6x7vPPZby5V0VUrun48NUb7P8JLM81VZPnIO3vnL741NKPtlY2655tZQ69X9vaTUraUGhUaK1ztvBgw/P/031Uzs4mxlEj3RgPmvhphIuTpsqzHIW4n4yV6uZ10PpTAHB+X6KZvzsEz0IhL3t9h9dAtxUOrvSXRaO0nVwGBrti+kIfgOkApHPR5UXKdD6QyyGYbc4yZ+qCLkfDYyF9fSannBH4q8SV6tFLctZwZzCheIP3yx4FwyTbYtj53B0cYVoP3a8DVc="
 
 
 #page
@@ -258,10 +258,10 @@ matrix:
             make clean
           build_command: "make all"
           branch_pattern: coverity_scan
-      # script: |
-      #   ./configure --enable-maintainer-mode;
-      #   make all;
-      #   make check;
+      script: |
+        ./configure --enable-maintainer-mode;
+        make all;
+        make check;
 
 #page
 #### done
