@@ -252,10 +252,7 @@ matrix:
             name: "marcomaggi/cctemplate"
             description: "Build submitted via Travis CI"
           notification_email: marco.maggi-ipsu@poste.it
-          build_command_prepend: |
-            sh ./autogen.sh;
-            ./configure --enable-maintainer-mode;
-            make clean
+          build_command_prepend: "sh ./autogen.sh; ./configure --enable-maintainer-mode; make clean"
           build_command: "make all"
           branch_pattern: coverity_scan
       script: |
