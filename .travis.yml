@@ -78,12 +78,17 @@ branches:
     - master
     - coverity_scan
 
+# NOTE There must be only *one* env.global key!!!  Otherwise the earlier
+# settings will be ineffective.
 env:
   global:
     - MAKEFLAGS="-j 2"
     - PATH=/tmp/mine/bin:$PATH;
     - LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
     - PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
+    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+    #   via the "travis encrypt" command using the project repo's public key
+    - secure: "f5cEoLUmV/glyFtKYR2oBnU8X0KmNEg3mVjeK9UTXqs/hZoT94o2eVzPsg9wi/MnQf/pBo1aq9o2svJFh+FOJqz9wmzYK8zcWGxkJT9cUoBGLElbMdDdVQWd9JfIhiI9ZxReiADrpG60Axkfng3W1zoubiRByqYkrhIY2scSVu0dILpoagTHPE6WscdlHQa96fTxoVmpGBVcr1Kjg9+CqQMXmVjUroTXsKwoFvQkBNzbl6n7WGpW0n8HStTpnr78xt+2f8ZR+o01g3gfWpu7520LoewLi165h3PBcUqOReSdA487NFzS1OvbXY20nXAC362sdoHhwY1fStgMlVqmUJc8Bhheep/UHgqgdaivqVe5JQJe85y71HdlEJk9ZLW8Ig/LabpDNZ6c3lOqVFBIpcJRC6s7UEC0E2t6x7vPPZby5V0VUrun48NUb7P8JLM81VZPnIO3vnL741NKPtlY2655tZQ69X9vaTUraUGhUaK1ztvBgw/P/031Uzs4mxlEj3RgPmvhphIuTpsqzHIW4n4yV6uZ10PpTAHB+X6KZvzsEz0IhL3t9h9dAtxUOrvSXRaO0nVwGBrti+kIfgOkApHPR5UXKdD6QyyGYbc4yZ+qCLkfDYyF9fSannBH4q8SV6tFLctZwZzCheIP3yx4FwyTbYtj53B0cYVoP3a8DVc="
 
 #page
 #### Coverity Scan integration
@@ -100,12 +105,6 @@ env:
 # - Do not run the full matrix of scripts when commits are pushed on the
 # "coverity_scan" branch.
 #
-
-env:
-  global:
-    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-    #   via the "travis encrypt" command using the project repo's public key
-    - secure: "f5cEoLUmV/glyFtKYR2oBnU8X0KmNEg3mVjeK9UTXqs/hZoT94o2eVzPsg9wi/MnQf/pBo1aq9o2svJFh+FOJqz9wmzYK8zcWGxkJT9cUoBGLElbMdDdVQWd9JfIhiI9ZxReiADrpG60Axkfng3W1zoubiRByqYkrhIY2scSVu0dILpoagTHPE6WscdlHQa96fTxoVmpGBVcr1Kjg9+CqQMXmVjUroTXsKwoFvQkBNzbl6n7WGpW0n8HStTpnr78xt+2f8ZR+o01g3gfWpu7520LoewLi165h3PBcUqOReSdA487NFzS1OvbXY20nXAC362sdoHhwY1fStgMlVqmUJc8Bhheep/UHgqgdaivqVe5JQJe85y71HdlEJk9ZLW8Ig/LabpDNZ6c3lOqVFBIpcJRC6s7UEC0E2t6x7vPPZby5V0VUrun48NUb7P8JLM81VZPnIO3vnL741NKPtlY2655tZQ69X9vaTUraUGhUaK1ztvBgw/P/031Uzs4mxlEj3RgPmvhphIuTpsqzHIW4n4yV6uZ10PpTAHB+X6KZvzsEz0IhL3t9h9dAtxUOrvSXRaO0nVwGBrti+kIfgOkApHPR5UXKdD6QyyGYbc4yZ+qCLkfDYyF9fSannBH4q8SV6tFLctZwZzCheIP3yx4FwyTbYtj53B0cYVoP3a8DVc="
 
 before_install:
   - if test "$TRAVIS_OS_NAME" != osx ; then echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-; else true; fi
