@@ -1,6 +1,5 @@
 # cctemplate
 
-[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/XXX/badge)](https://bestpractices.coreinfrastructure.org/projects/XXX)
 [![Build Status](https://travis-ci.org/marcomaggi/cctemplate.svg?branch=master)](https://travis-ci.org/marcomaggi/cctemplate)
 [![Coverity passed](https://scan.coverity.com/projects/12801/badge.svg)](https://scan.coverity.com/projects/marcomaggi-cctemplate)
 [![codecov](https://codecov.io/gh/marcomaggi/cctemplate/branch/master/graph/badge.svg)](https://codecov.io/gh/marcomaggi/cctemplate)
@@ -17,7 +16,7 @@ Travis CI, on both Ubuntu GNU+Linux systems and OS X systems.
 
 ## License
 
-Copyright (c) 2012, 2015-2017 Marco Maggi <marco.maggi-ipsu@poste.it><br/>
+Copyright (c) 2012, 2015-2018 Marco Maggi <marco.maggi-ipsu@poste.it><br/>
 All rights reserved.
 
 This program is free software: you  can redistribute it and/or modify it
@@ -163,16 +162,6 @@ the GNU Project software can be found here:
 
 
 ## Badges and static analysis
-
-### CII Best Practices
-
-The  Linux  Foundation's  Core   Infrastructure  Initiative  (CII)  Best
-Practices badge is a way for Free/Libre and Open Source Software (FLOSS)
-projects to show that they follow  best practices.  We can find the self
-certification at:
-
-[https://bestpractices.coreinfrastructure.org/projects/XXX/](https://bestpractices.coreinfrastructure.org/projects/XXX/)
-
 
 ### Travis CI
 
