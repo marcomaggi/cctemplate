@@ -7,7 +7,7 @@ AC_INIT([CCTemplate],[0.1.0-devel.0],
   [cctemplate],[http://marcomaggi.github.com/cctemplate])
 dnl This is the revision number of this configure.ac
 AC_REVISION([0.1])
-AC_COPYRIGHT([Copyright (c) 2016, 2017 Marco Maggi <marco.maggi-ipsu@poste.it>
+AC_COPYRIGHT([Copyright (c) 2016, 2017, 2018 Marco Maggi <marco.maggi-ipsu@poste.it>
 
 This program is free software: you  can redistribute it and/or modify it
 under the  terms of the GNU  General Public License as  published by the
@@ -43,19 +43,18 @@ LT_INIT
 dnl page
 #### libraries interface version
 
-AS_VAR_SET([SLACKSTUFF_PACKAGE_VERSION],[0.1d0.0])
-AC_SUBST([SLACKSTUFF_PACKAGE_VERSION])
+MM_LIBTOOL_LIBRARY_VERSIONS([cctemplate],1,0,0)
 
 dnl This is the version stored in the pkg-config data file.
 AC_SUBST([CCTEMPLATE_PKG_CONFIG_VERSION],[0.1])
 
-MM_LIBTOOL_LIBRARY_VERSIONS([cctemplate],1,0,0)
+AS_VAR_SET([SLACKSTUFF_PACKAGE_VERSION],[0.1d0.0])
+AC_SUBST([SLACKSTUFF_PACKAGE_VERSION])
 
 dnl page
 #### basic system inspection
 
 AC_LANG([C])
-dnl AC_PROG_CC
 AC_PROG_CC_C99
 AX_CHECK_COMPILE_FLAG([-std=c11],[],[AC_MSG_ERROR([*** Compiler does not support -std=c11])],[-pedantic])
 
@@ -112,6 +111,17 @@ AC_CACHE_SAVE
 
 dnl page
 #### external libraries
+
+dnl Testing  presence of pkg-config.   It works  only if this  file also
+dnl contains an actual expansion of PKG_CHECK_MODULES.
+dnl
+dnl AC_MSG_CHECKING([availability of pkg-config m4 macros])
+dnl AS_IF([test m4_ifdef([PKG_CHECK_MODULES],[yes],[no]) == yes],
+dnl   [AC_MSG_RESULT([yes])],
+dnl   [AC_MSG_RESULT([no])
+dnl    AC_MSG_ERROR([pkg-config is required.  See pkg-config.freedesktop.org])])
+
+dnl PKG_CHECK_MODULES([CCEXCEPTIONS],[ccexceptions >= 0.6.4])
 
 dnl AX_PTHREAD(,[AC_MSG_ERROR([cannot find pthread library],[1])])
 
