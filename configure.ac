@@ -43,7 +43,7 @@ LT_INIT
 dnl page
 #### libraries interface version
 
-MM_LIBTOOL_LIBRARY_VERSIONS([cctemplate],1,0,0)
+MMUX_LIBTOOL_LIBRARY_VERSIONS([cctemplate],1,0,0)
 
 dnl This is the version stored in the pkg-config data file.
 AC_SUBST([CCTEMPLATE_PKG_CONFIG_VERSION],[0.1])
@@ -54,16 +54,10 @@ AC_SUBST([SLACKSTUFF_PACKAGE_VERSION])
 dnl page
 #### basic system inspection
 
-AC_LANG([C])
-AC_PROG_CC_C99
-AX_CHECK_COMPILE_FLAG([-std=c11],[],[AC_MSG_ERROR([*** Compiler does not support -std=c11])],[-pedantic])
+MMUX_CHECK_TARGET_OS
 
-AS_VAR_SET(AX_CFLAGS,[-std=c11])
-AS_VAR_APPEND(AX_CFLAGS,[" -Wall -Wextra"])
-AX_GCC_VERSION
-AS_IF([test "x$GCC" = "xyes"],
-  [AS_CASE("$GCC_VERSION",
-     [7.*],[AS_VAR_APPEND(AX_CFLAGS,[" -pedantic -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict -Wnull-dereference -Wjump-misses-init -Wdouble-promotion -Wshadow -Wformat=2 -Wmisleading-indentation"])])])
+AC_LANG([C])
+MMUX_LANG_C11
 AC_SUBST(AX_CFLAGS)
 
 AM_PROG_AS
@@ -88,9 +82,9 @@ AC_TYPE_UINT16_T
 AC_TYPE_UINT32_T
 AC_TYPE_UINT64_T
 
-dnl MM_CHECK_PAGESIZE
+dnl MMUX_CHECK_PAGESIZE
 dnl AC_DEFINE_UNQUOTED([CCG_PAGESIZE],[$MM_cv_pagesize],[Platform page size.])
-dnl MM_CHECK_PAGESHIFT($mm_cv_pagesize)
+dnl MMUX_CHECK_PAGESHIFT($mm_cv_pagesize)
 dnl AC_DEFINE_UNQUOTED([CCG_PAGESHIFT],[$MM_cv_pageshift],[Page shift bit count.])
 
 dnl AC_LANG([C++])
@@ -112,16 +106,8 @@ AC_CACHE_SAVE
 dnl page
 #### external libraries
 
-dnl Testing  presence of pkg-config.   It works  only if this  file also
-dnl contains an actual expansion of PKG_CHECK_MODULES.
-dnl
-dnl AC_MSG_CHECKING([availability of pkg-config m4 macros])
-dnl AS_IF([test m4_ifdef([PKG_CHECK_MODULES],[yes],[no]) == yes],
-dnl   [AC_MSG_RESULT([yes])],
-dnl   [AC_MSG_RESULT([no])
-dnl    AC_MSG_ERROR([pkg-config is required.  See pkg-config.freedesktop.org])])
-
-dnl PKG_CHECK_MODULES([CCEXCEPTIONS],[ccexceptions >= 0.6.4])
+MMUX_CHECK_PKG_CONFIG_MACROS
+PKG_CHECK_MODULES([CCEXCEPTIONS],[ccexceptions >= 0.6.4])
 
 dnl AX_PTHREAD(,[AC_MSG_ERROR([cannot find pthread library],[1])])
 
@@ -133,19 +119,6 @@ dnl AC_CHECK_HEADERS([gmp.h],,[AC_MSG_ERROR([Cannot find libgmp.])])
 dnl AC_CHECK_LIB([gmp],[__gmpn_add],,[AC_MSG_ERROR([Cannot find libgmp.])])
 
 dnl AC_CACHE_SAVE
-
-dnl page
-#### operating system specific configuration
-
-dnl AS_CASE("$target_os",
-dnl   [*linux*],[],
-dnl   [*bsd*],[],
-dnl   [*cygwin*],[],
-dnl   [*darwin*],[cctemplate_OS_DARWIN=yes])
-dnl AM_CONDITIONAL([WANT_LINUX], [test "x$cctemplate_OS_LINUX"  = xyes])
-dnl AM_CONDITIONAL([WANT_BSD],   [test "x$cctemplate_OS_BSD"    = xyes])
-dnl AM_CONDITIONAL([WANT_CYGWIN],[test "x$cctemplate_OS_CYGWIN" = xyes])
-dnl AM_CONDITIONAL([WANT_DARWIN],[test "x$cctemplate_OS_DARWIN" = xyes])
 
 dnl page
 #### finish
