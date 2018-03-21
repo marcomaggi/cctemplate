@@ -10,8 +10,8 @@
 This is  a template project, to  be used as starting  point for packages
 that install a C language library.
 
-  The package  makes use of  the GNU Autotools  and it is  tested, using
-Travis CI, on both Ubuntu GNU+Linux systems and OS X systems.
+  The package uses the GNU Autotools  and it is tested, using Travis CI,
+on both Ubuntu GNU+Linux systems and OS X systems.
 
 
 ## License
