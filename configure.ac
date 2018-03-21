@@ -106,8 +106,8 @@ AC_CACHE_SAVE
 dnl page
 #### external libraries
 
-MMUX_CHECK_PKG_CONFIG_MACROS
-PKG_CHECK_MODULES([CCEXCEPTIONS],[ccexceptions >= 0.6.4])
+dnl MMUX_CHECK_PKG_CONFIG_MACROS
+dnl PKG_CHECK_MODULES([CCEXCEPTIONS],[ccexceptions >= 0.6.4])
 
 dnl AX_PTHREAD(,[AC_MSG_ERROR([cannot find pthread library],[1])])
 
