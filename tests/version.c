@@ -7,14 +7,14 @@
 
 	Test file for version functions.
 
-  Copyright (C) 2012, 2017 Marco Maggi <marco.maggi-ipsu@poste.it>
+  Copyright (C) 2012, 2017, 2018 Marco Maggi <marco.maggi-ipsu@poste.it>
 
   See the COPYING file.
 */
 
+#include <cctemplate.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <cctemplate.h>
 
 int
 main (int argc CCTEMPLATE_UNUSED, const char *const argv[] CCTEMPLATE_UNUSED)
