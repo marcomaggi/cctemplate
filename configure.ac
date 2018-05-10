@@ -83,10 +83,8 @@ dnl AC_TYPE_UINT16_T
 dnl AC_TYPE_UINT32_T
 dnl AC_TYPE_UINT64_T
 
-dnl MMUX_CHECK_PAGESIZE
-dnl AC_DEFINE_UNQUOTED([CCG_PAGESIZE],[$MM_cv_pagesize],[Platform page size.])
-dnl MMUX_CHECK_PAGESHIFT($mm_cv_pagesize)
-dnl AC_DEFINE_UNQUOTED([CCG_PAGESHIFT],[$MM_cv_pageshift],[Page shift bit count.])
+MMUX_CHECK_PAGE_SIZE
+MMUX_CHECK_PAGE_SHIFT($mmux_cv_page_size)
 
 MMUX_DETERMINE_SIZEOF([SIZE_T],[size_t],[
 #ifdef HAVE_STDDEF_H
