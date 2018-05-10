@@ -5,11 +5,14 @@ Subject: [announce] CCTemplate revision 0.1d0
 			    ==========
 
 
-This  package installs  a  C language  library  implementing a  template
+This package  installs a  C11 language  library implementing  a template
 library.
 
-  The package  makes use  of the  GNU Autotools  and it  is tested  on a
-GNU+Linux  system.   It is  distributed  under  the GNU  General  Public
+  The package uses the GNU Autotools  and it is tested, using Travis CI,
+on both Ubuntu GNU+Linux systems and OS X systems.  This package depends
+on the  package CCExceptions, at least  version 0.7.2.  To run  the test
+suite: this package  depends upon the package CCTests,  at least version
+0.2.0-devel.1.  This package is distributed under the GNU General Public
 License version 3.0.
 
   The latest release of this package can be downloaded from:
@@ -27,6 +30,14 @@ and as backup at:
 the documentation is available online:
 
 	  <https://marcomaggi.github.io/docs/cctemplate.html>
+
+the package CCExceptions is available at:
+
+	     <https://github.com/marcomaggi/ccexceptions/>
+
+the package CCTests is available at:
+
+		<https://github.com/marcomaggi/cctests/>
 
 
 Notes for revision 0.1d0

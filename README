@@ -21,10 +21,13 @@ Topics
 ---------------
 
 This is  a template project, to  be used as starting  point for packages
-that install a C language library.
+that install a C11 language library.
 
   The package uses the GNU Autotools  and it is tested, using Travis CI,
-on both Ubuntu GNU+Linux systems and OS X systems.
+on both Ubuntu GNU+Linux systems and OS X systems.  This package depends
+on the  package CCExceptions, at least  version 0.7.2.  To run  the test
+suite: this package  depends upon the package CCTests,  at least version
+0.2.0-devel.1.
 
 
 2. License
@@ -158,6 +161,14 @@ the documentation is available online:
 the GNU Project software can be found here:
 
 			 <https://www.gnu.org/>
+
+the package CCExceptions is available at:
+
+	     <https://github.com/marcomaggi/ccexceptions/>
+
+the package CCTests is available at:
+
+		<https://github.com/marcomaggi/cctests/>
 
 
 D. Badges and static analysis
