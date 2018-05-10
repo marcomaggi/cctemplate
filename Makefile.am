@@ -46,7 +46,9 @@ libcctemplate_la_SOURCES= \
 check_PROGRAMS	= \
 	tests/version
 
+if MMUX_TESTING_ENABLED
 TESTS				= $(check_PROGRAMS)
+endif
 
 cctemplate_tests_cppflags	= -I$(srcdir)/src
 cctemplate_tests_ldadd		= libcctemplate.la

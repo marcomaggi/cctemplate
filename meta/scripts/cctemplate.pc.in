@@ -21,8 +21,8 @@ sysconfdir=@sysconfdir@
 Name: @PACKAGE_NAME@
 Description: template C library
 Version: @CCTEMPLATE_PKG_CONFIG_VERSION@
-Libs: -L${libdir} -lcctemplate
-Cflags: -I${includedir}
+Libs: -L${libdir} -lcctemplate @CCEXCEPTIONS_LIBS@
+Cflags: -I${includedir} @CCEXCEPTIONS_FLAGS@
 
 ### end of file
 # Local Variables:

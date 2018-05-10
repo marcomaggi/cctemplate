@@ -4,7 +4,7 @@ dnl
 AC_PREREQ([2.69])
 AC_INIT([CCTemplate],[0.1.0-devel.0],
   [marco.maggi-ipsu@poste.it],
-  [cctemplate],[http://marcomaggi.github.com/cctemplate])
+  [cctemplate],[http://github.com/marcomaggi/cctemplate])
 dnl This is the revision number of this configure.ac
 AC_REVISION([0.1])
 AC_COPYRIGHT([Copyright (c) 2016, 2017, 2018 Marco Maggi <marco.maggi-ipsu@poste.it>
@@ -65,27 +65,34 @@ AM_PROG_CC_C_O
 AC_HEADER_STDC
 AC_HEADER_SYS_WAIT
 AC_CHECK_HEADERS([assert.h stdint.h strings.h errno.h stddef.h sys/mman.h sys/resource.h unistd.h])
-AC_CHECK_SIZEOF(void *)
-AC_C_CONST
-AC_C_INLINE
-AC_C_RESTRICT
-AC_TYPE_LONG_LONG_INT
-AC_TYPE_UNSIGNED_LONG_LONG_INT
-AC_TYPE_SIZE_T
-AC_TYPE_SSIZE_T
-AC_TYPE_INT8_T
-AC_TYPE_INT16_T
-AC_TYPE_INT32_T
-AC_TYPE_INT64_T
-AC_TYPE_UINT8_T
-AC_TYPE_UINT16_T
-AC_TYPE_UINT32_T
-AC_TYPE_UINT64_T
+
+dnl AC_CHECK_SIZEOF(void *)
+dnl AC_C_CONST
+dnl AC_C_INLINE
+dnl AC_C_RESTRICT
+dnl AC_TYPE_LONG_LONG_INT
+dnl AC_TYPE_UNSIGNED_LONG_LONG_INT
+dnl AC_TYPE_SIZE_T
+dnl AC_TYPE_SSIZE_T
+dnl AC_TYPE_INT8_T
+dnl AC_TYPE_INT16_T
+dnl AC_TYPE_INT32_T
+dnl AC_TYPE_INT64_T
+dnl AC_TYPE_UINT8_T
+dnl AC_TYPE_UINT16_T
+dnl AC_TYPE_UINT32_T
+dnl AC_TYPE_UINT64_T
 
 dnl MMUX_CHECK_PAGESIZE
 dnl AC_DEFINE_UNQUOTED([CCG_PAGESIZE],[$MM_cv_pagesize],[Platform page size.])
 dnl MMUX_CHECK_PAGESHIFT($mm_cv_pagesize)
 dnl AC_DEFINE_UNQUOTED([CCG_PAGESHIFT],[$MM_cv_pageshift],[Page shift bit count.])
+
+MMUX_DETERMINE_SIZEOF([SIZE_T],[size_t],[
+#ifdef HAVE_STDDEF_H
+#  include <stddef.h>
+#endif
+])
 
 dnl AC_LANG([C++])
 dnl AC_PROG_CXX
@@ -95,19 +102,22 @@ AC_CACHE_SAVE
 dnl page
 #### checks for library functions
 
-AC_FUNC_MALLOC
-AC_FUNC_MEMCMP
+dnl AC_FUNC_MALLOC
+dnl AC_FUNC_MEMCMP
 dnl AC_CHECK_FUNCS([memmove memset strerror])
 dnl AC_CHECK_FUNCS([mmap munmap msync mremap madvise mlock munlock mlockall munlockall mprotect])
 dnl AC_CHECK_FUNCS([getenv])
 
-AC_CACHE_SAVE
+dnl AC_CACHE_SAVE
 
 dnl page
 #### external libraries
 
-dnl MMUX_CHECK_PKG_CONFIG_MACROS
-dnl PKG_CHECK_MODULES([CCEXCEPTIONS],[ccexceptions >= 0.6.4])
+MMUX_CHECK_PKG_CONFIG_MACROS
+PKG_CHECK_MODULES([CCEXCEPTIONS],[ccexceptions >= 0.7.2])
+PKG_CHECK_MODULES([CCTESTS],[cctests >= 0.2.0])
+
+AM_CONDITIONAL([MMUX_TESTING_ENABLED],[test -n "$CCTESTS_LIBS"])
 
 dnl AX_PTHREAD(,[AC_MSG_ERROR([cannot find pthread library],[1])])
 

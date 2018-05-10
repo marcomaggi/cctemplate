@@ -9,6 +9,7 @@ m4_include(meta/autoconf/ax-gcc-version.m4)
 m4_include(meta/autoconf/mmux-lang-c11.m4)
 m4_include(meta/autoconf/mmux-check-page-size.m4)
 m4_include(meta/autoconf/mmux-check-page-shift.m4)
+m4_include(meta/autoconf/mmux-determine-sizeof.m4)
 dnl m4_include(meta/autoconf/ax-pthread.m4)
 
 ### end of file
