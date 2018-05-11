@@ -3,14 +3,14 @@
 # Installation script to run from the Travis CI config file before
 # attempting a build.
 #
-# Install CCExceptions under the directory "/tmp/mine".
+# Install CCTests under the directory "/tmp/mine".
 # We assume the script is run from the top directory of the build tree.
 
-PROGNAME=install-ccexceptions.sh
-VERSION=0.7.2-beta.0
-STEM="ccexceptions-${VERSION}"
+PROGNAME=install-cctests.sh
+VERSION=0.2.0-devel.1
+STEM="cctests-${VERSION}"
 ARCHIVE="${STEM}.tar.gz"
-SOURCE_URI="https://github.com/marcomaggi/ccexceptions/archive/v${VERSION}.tar.gz"
+SOURCE_URI="https://github.com/marcomaggi/cctests/archive/v${VERSION}.tar.gz"
 LOCAL_ARCHIVE="/tmp/${ARCHIVE}"
 TOP_SRCDIR="/tmp/${STEM}"
 

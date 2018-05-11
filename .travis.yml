@@ -133,7 +133,8 @@ addons:
 
 # install:
 #   - ./meta/travis-ci/install-some-dependency.sh
-#   - ./meta/travis-ci/install-ccexceptions.sh
+   - ./meta/travis-ci/install-ccexceptions.sh
+   - ./meta/travis-ci/install-cctests.sh
 
 #page
 #### build scripts
