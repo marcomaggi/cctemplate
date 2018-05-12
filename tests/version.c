@@ -17,8 +17,10 @@
 #include <stdlib.h>
 
 int
-main (int argc CCTEMPLATE_UNUSED, const char *const argv[] CCTEMPLATE_UNUSED)
+main (int argc CCT_UNUSED, char const * const argv[] CCT_UNUSED)
 {
+  cct_library_init();
+
   printf("version number string: %s\n", cct_version_string());
   printf("libtool version number: %d:%d:%d\n",
 	 cct_version_interface_current(),

@@ -7,7 +7,7 @@
 
 
 
-  Copyright (C) 2012, 2017 Marco Maggi <marco.maggi-ipsu@poste.it>
+  Copyright (C) 2012, 2017, 2018 Marco Maggi <marco.maggi-ipsu@poste.it>
 
   This program is  free software: you can redistribute  it and/or modify
   it under the  terms of the GNU General Public  License as published by
@@ -35,17 +35,17 @@
 extern "C" {
 #endif
 
-/* The  macro  CCTEMPLATE_UNUSED  indicates  that a  function,  function
+/* The  macro  CCT_UNUSED  indicates  that a  function,  function
    argument or variable may potentially be unused. Usage examples:
 
-   static int unused_function (char arg) CCTEMPLATE_UNUSED;
-   int foo (char unused_argument CCTEMPLATE_UNUSED);
-   int unused_variable CCTEMPLATE_UNUSED;
+   static int unused_function (char arg) CCT_UNUSED;
+   int foo (char unused_argument CCT_UNUSED);
+   int unused_variable CCT_UNUSED;
 */
 #ifdef __GNUC__
-#  define CCTEMPLATE_UNUSED		__attribute__((__unused__))
+#  define CCT_UNUSED		__attribute__((__unused__))
 #else
-#  define CCTEMPLATE_UNUSED		/* empty */
+#  define CCT_UNUSED		/* empty */
 #endif
 
 #ifndef __GNUC__
@@ -57,25 +57,25 @@ extern "C" {
 #if defined _WIN32 || defined __CYGWIN__
 #  ifdef BUILDING_DLL
 #    ifdef __GNUC__
-#      define cctemplate_decl		__attribute__((__dllexport__)) extern
+#      define cct_decl		__attribute__((__dllexport__)) extern
 #    else
-#      define cctemplate_decl		__declspec(dllexport) extern
+#      define cct_decl		__declspec(dllexport) extern
 #    endif
 #  else
 #    ifdef __GNUC__
-#      define cctemplate_decl		__attribute__((__dllimport__)) extern
+#      define cct_decl		__attribute__((__dllimport__)) extern
 #    else
-#      define cctemplate_decl		__declspec(dllimport) extern
+#      define cct_decl		__declspec(dllimport) extern
 #    endif
 #  endif
-#  define cctemplate_private_decl	extern
+#  define cct_private_decl	extern
 #else
 #  if __GNUC__ >= 4
-#    define cctemplate_decl		__attribute__((__visibility__("default"))) extern
-#    define cctemplate_private_decl	__attribute__((__visibility__("hidden")))  extern
+#    define cct_decl		__attribute__((__visibility__("default"))) extern
+#    define cct_private_decl	__attribute__((__visibility__("hidden")))  extern
 #  else
-#    define cctemplate_decl		extern
-#    define cctemplate_private_decl	extern
+#    define cct_decl		extern
+#    define cct_private_decl	extern
 #  endif
 #endif
 
@@ -83,6 +83,8 @@ extern "C" {
 /** --------------------------------------------------------------------
  ** Headers.
  ** ----------------------------------------------------------------- */
+
+#include <ccexceptions.h>
 
 #if 0
 
@@ -108,7 +110,7 @@ extern "C" {
  ** Constants and preprocessor macros.
  ** ----------------------------------------------------------------- */
 
-#define CCTEMPLATE_PC(POINTER_TYPE, POINTER_NAME, EXPRESSION)	\
+#define CCT_PC(POINTER_TYPE, POINTER_NAME, EXPRESSION)	\
   POINTER_TYPE * POINTER_NAME = (POINTER_TYPE *) (EXPRESSION)
 
 
@@ -116,10 +118,43 @@ extern "C" {
  ** Version functions.
  ** ----------------------------------------------------------------- */
 
-cctemplate_decl char const *	cct_version_string		(void);
-cctemplate_decl int		cct_version_interface_current	(void);
-cctemplate_decl int		cct_version_interface_revision	(void);
-cctemplate_decl int		cct_version_interface_age	(void);
+cct_decl char const *	cct_version_string		(void);
+cct_decl int		cct_version_interface_current	(void);
+cct_decl int		cct_version_interface_revision	(void);
+cct_decl int		cct_version_interface_age	(void);
+
+
+/** --------------------------------------------------------------------
+ ** Library initialisation.
+ ** ----------------------------------------------------------------- */
+
+cct_decl void cct_library_init (void)
+  __attribute__((__constructor__));
+
+
+/** --------------------------------------------------------------------
+ ** Condition objects: error.
+ ** ----------------------------------------------------------------- */
+
+typedef struct cct_descriptor_some_error_t	cct_descriptor_some_error_t;
+typedef struct cct_condition_some_error_t	cct_condition_some_error_t;
+
+struct cct_descriptor_some_error_t {
+  cce_descriptor_t			descriptor;
+};
+
+struct cct_condition_some_error_t {
+  cce_condition_runtime_error_t		runtime_error;
+};
+
+cct_decl void cct_condition_init_some_error (cct_condition_some_error_t * C)
+  __attribute__((__nonnull__(1)));
+
+cct_decl cce_condition_t const * cct_condition_new_some_error (void)
+  __attribute__((__returns_nonnull__));
+
+cct_decl bool cct_condition_is_some_error (cce_condition_t const * C)
+  __attribute__((__nonnull__(1)));
 
 
 /** --------------------------------------------------------------------

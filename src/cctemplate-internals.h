@@ -8,7 +8,7 @@
 	This  header  file is  for  internal  definitions.  It  must  be
 	included by all the source files in this package.
 
-  Copyright (C) 2014 Marco Maggi <marco.maggi-ipsu@poste.it>
+  Copyright (C) 2014, 2018 Marco Maggi <marco.maggi-ipsu@poste.it>
 
   This program is  free software: you can redistribute  it and/or modify
   it under the  terms of the GNU General Public  License as published by
@@ -55,6 +55,7 @@
  ** Function prototypes.
  ** ----------------------------------------------------------------- */
 
+cct_private_decl void cct_condition_init_module (void);
 
 
 /** --------------------------------------------------------------------

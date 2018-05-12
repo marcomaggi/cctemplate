@@ -134,7 +134,9 @@ included in the section entitled ``@gnu{} Free Documentation License''.
 
 @menu
 * overview::                    Overview of the package.
+* init::                        Library initialisation.
 * version::                     Version functions.
+* conditions::                  Exceptional condition objects.
 * utils::                       Utility definitions.
 
 Appendices
@@ -167,6 +169,9 @@ package CCTests, at least version @value{CCTESTS_VERSION}.
 @value{PACKAGE} installs the single header file @file{cctemplate.h}.  All the function names in the
 @api{} are prefixed with @code{cct_}; all the preprocessor symbol names are prefixed with
 @code{CCT_}; all the type names are prefixed with @code{cct_} and suffixed with @code{_t}.
+
+@strong{Notice that, before using the library, we need to call the global initialisation function
+@cfunc{cctemplate_library_init}}.
 
 @menu
 * overview linking::            Linking code with the library.
@@ -217,6 +222,20 @@ AC_CHECK_HEADERS([cctemplate.h],,
 @end example
 
 @c page
+@node init
+@chapter Library initialisation
+
+
+@deftypefun void cct_library_init (void)
+Initialise the internal structures of the library.  It is fine to call this function multiple times.
+
+@quotation
+@strong{NOTE} This function is defined with the @gcc{} attribute @code{constructor}, so, when the
+library is built with @gcc{}: it will be called automatically by the library initialisation code.
+@end quotation
+@end deftypefun
+
+@c page
 @node version
 @chapter Version functions
 
@@ -247,11 +266,60 @@ Return an integer representing the library interface current age.
 @end deftypefun
 
 @c page
+@node conditions
+@chapter Exceptional condition objects
+
+
+@menu
+* conditions error::            An error condition.
+@end menu
+
+@c page
+@node conditions error
+@section An error condition
+
+
+The @dfn{some error exceptional--condition object} has the purpose of describing an exceptional
+condition caused by some error.
+
+There should be only one @emph{some error} condition object: the one predefined by @value{PACKAGE}.
+
+All the following definitions are accessible from the header file @file{cctemplate.h}.
+
+
+@deftp {Struct Typedef} cct_descriptor_some_error_t
+Structure type representing the descriptor for @emph{some error} condition objects.  This descriptor
+has @objtype{cce_descriptor_runtime_error_t} as parent descriptor.
+@end deftp
+
+
+@deftp {Struct Typedef} cct_condition_some_error_t
+Structure type representing an @emph{some error} condition object.
+@end deftp
+
+
+@deftypefun void cct_condition_init_some_error (cct_condition_some_error_t * @var{C})
+Initialise an already allocated condition object.  This function exists to allow sub--typing from
+@objtype{cct_condition_some_error_t}.
+@end deftypefun
+
+
+@deftypefun {cce_condition_t const *} cct_condition_new_some_error (void)
+Return a pointer to the statically allocated structure representing the single @emph{some error}
+condition object.
+@end deftypefun
+
+
+@deftypefun bool cct_condition_is_some_error (cce_condition_t const * @var{C})
+Return @ctrue{} if @var{C} is an @emph{some error} condition object; otherwise return @cfalse{}.
+@end deftypefun
+
+@c page
 @node utils
 @chapter Utility definitions
 
 
-@defmac CCTEMPLATE_PC (@var{POINTER_TYPE}, @var{POINTER_NAME}, @var{EXPRESSION})
+@defmac CCT_PC (@var{POINTER_TYPE}, @var{POINTER_NAME}, @var{EXPRESSION})
 Preprocessor macro used to define pointer variables initialised with a cast expression.  It expands
 to:
 
@@ -262,20 +330,20 @@ POINTER_TYPE * POINTER_NAME = (POINTER_TYPE *) (EXPRESSION)
 For example, the macro use:
 
 @example
-CCTEMPLATE_PC(cctemplate_descriptor_test_failure_t, C, _C);
+CCT_PC(cct_descriptor_error_t, C, _C);
 @end example
 
 @noindent
 expands into:
 
 @example
-cctemplate_descriptor_test_failure_t * C = \
-   (cctemplate_descriptor_test_failure_t *) (_C);
+cct_descriptor_error_t * C = \
+   (cct_descriptor_error_t *) (_C);
 @end example
 @end defmac
 
 
-@defmac CCTEMPLATE_UNUSED
+@defmac CCT_UNUSED
 Preprocessor macro that is meant to expand into an attribute declaration.  If the symbol
 @code{__GNUC__} is defined, the expansion is:
 

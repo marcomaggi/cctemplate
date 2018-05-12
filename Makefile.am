@@ -33,12 +33,16 @@ cctemplate_AGE		= @cctemplate_VERSION_INTERFACE_AGE@
 
 include_HEADERS		= src/cctemplate.h
 
-lib_LTLIBRARIES		= libcctemplate.la
-libcctemplate_la_LDFLAGS= -version-info $(cctemplate_CURRENT):$(cctemplate_REVISION):$(cctemplate_AGE)
-libcctemplate_la_SOURCES= \
+lib_LTLIBRARIES			= libcctemplate.la
+libcctemplate_la_CPPFLAGS	= $(CCEXCEPTIONS_CFLAGS)
+libcctemplate_la_LDFLAGS	= \
+	-version-info $(cctemplate_CURRENT):$(cctemplate_REVISION):$(cctemplate_AGE) \
+	$(CCEXCEPTIONS_LIBS)
+libcctemplate_la_SOURCES	= \
 	src/cctemplate.h		\
 	src/cctemplate-internals.h	\
-	src/cctemplate-version.c
+	src/cctemplate-library.c	\
+	src/cctemplate-conditions.c
 
 #page
 #### tests
@@ -50,8 +54,8 @@ if MMUX_TESTING_ENABLED
 TESTS				= $(check_PROGRAMS)
 endif
 
-cctemplate_tests_cppflags	= -I$(srcdir)/src
-cctemplate_tests_ldadd		= libcctemplate.la
+cctemplate_tests_cppflags	= -I$(srcdir)/src $(CCEXCEPTIONS_CFLAGS) $(CCTESTS_CFLAGS)
+cctemplate_tests_ldadd		= libcctemplate.la $(CCEXCEPTIONS_LIBS) $(CCTESTS_LIBS)
 
 tests_version_CPPFLAGS		= $(cctemplate_tests_cppflags)
 tests_version_LDADD		= $(cctemplate_tests_ldadd)

@@ -1,13 +1,14 @@
 /*
   Part of: CCTemplate
-  Contents: version functions
-  Date: Thu Mar  1, 2012
+  Contents: library functions
+  Date: Mar  1, 2012
 
   Abstract
 
+	This  module  implements   library  initialisation  and  version
+	numbers inspection.
 
-
-  Copyright (C) 2012, 2014, 2017 Marco Maggi <marco.maggi-ipsu@poste.it>
+  Copyright (C) 2012, 2014, 2017, 2018 Marco Maggi <marco.maggi-ipsu@poste.it>
 
   This program is  free software: you can redistribute  it and/or modify
   it under the  terms of the GNU General Public  License as published by
@@ -31,6 +32,10 @@
 #include "cctemplate-internals.h"
 
 
+/** --------------------------------------------------------------------
+ ** Version functions.
+ ** ----------------------------------------------------------------- */
+
 char const *
 cct_version_string (void)
 {
@@ -50,6 +55,22 @@ int
 cct_version_interface_age (void)
 {
   return cctemplate_VERSION_INTERFACE_AGE;
+}
+
+
+/** --------------------------------------------------------------------
+ ** Library initialisation.
+ ** ----------------------------------------------------------------- */
+
+void
+cct_library_init (void)
+{
+  static bool	to_be_initialised = true;
+
+  if (to_be_initialised) {
+    to_be_initialised = false;
+    cct_condition_init_module();
+  }
 }
 
 /* end of file */
