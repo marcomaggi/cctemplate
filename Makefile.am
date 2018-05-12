@@ -48,17 +48,29 @@ libcctemplate_la_SOURCES	= \
 #### tests
 
 check_PROGRAMS	= \
-	tests/version
+	tests/version				\
+	tests/condition-subtyping-some-error
 
 if MMUX_TESTING_ENABLED
 TESTS				= $(check_PROGRAMS)
 endif
 
-cctemplate_tests_cppflags	= -I$(srcdir)/src $(CCEXCEPTIONS_CFLAGS) $(CCTESTS_CFLAGS)
+cctemplate_tests_cppflags	= -I$(srcdir)/src -I$(srcdir)/tests $(CCEXCEPTIONS_CFLAGS) $(CCTESTS_CFLAGS)
 cctemplate_tests_ldadd		= libcctemplate.la $(CCEXCEPTIONS_LIBS) $(CCTESTS_LIBS)
+
+## --------------------------------------------------------------------
 
 tests_version_CPPFLAGS		= $(cctemplate_tests_cppflags)
 tests_version_LDADD		= $(cctemplate_tests_ldadd)
+
+tests_condition_subtyping_some_error_CPPFLAGS	= $(cctemplate_tests_cppflags)
+tests_condition_subtyping_some_error_LDADD	= $(cctemplate_tests_ldadd)
+tests_condition_subtyping_some_error_SOURCES	= \
+	tests/condition-subtyping-some-error.c		\
+	tests/condition-subtyping-some-error-body.c	\
+	tests/condition-subtyping-some-error-header.h
+
+## --------------------------------------------------------------------
 
 installcheck-local: $(TESTS)
 	@for f in $(TESTS); do $(builddir)/$$f; done

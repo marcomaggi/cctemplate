@@ -147,6 +147,8 @@ struct cct_condition_some_error_t {
   cce_condition_runtime_error_t		runtime_error;
 };
 
+cct_decl cct_descriptor_some_error_t const * const cct_descriptor_some_error_ptr;
+
 cct_decl void cct_condition_init_some_error (cct_condition_some_error_t * C)
   __attribute__((__nonnull__(1)));
 
