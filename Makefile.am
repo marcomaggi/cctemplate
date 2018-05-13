@@ -49,7 +49,7 @@ libcctemplate_la_SOURCES	= \
 
 check_PROGRAMS	= \
 	tests/version				\
-	tests/condition-subtyping-some-error
+	tests/condition-objects
 
 if MMUX_TESTING_ENABLED
 TESTS				= $(check_PROGRAMS)
@@ -63,10 +63,10 @@ cctemplate_tests_ldadd		= libcctemplate.la $(CCEXCEPTIONS_LIBS) $(CCTESTS_LIBS)
 tests_version_CPPFLAGS		= $(cctemplate_tests_cppflags)
 tests_version_LDADD		= $(cctemplate_tests_ldadd)
 
-tests_condition_subtyping_some_error_CPPFLAGS	= $(cctemplate_tests_cppflags)
-tests_condition_subtyping_some_error_LDADD	= $(cctemplate_tests_ldadd)
-tests_condition_subtyping_some_error_SOURCES	= \
-	tests/condition-subtyping-some-error.c		\
+tests_condition_objects_CPPFLAGS	= $(cctemplate_tests_cppflags)
+tests_condition_objects_LDADD		= $(cctemplate_tests_ldadd)
+tests_condition_objects_SOURCES		= \
+	tests/condition-objects.c			\
 	tests/condition-subtyping-some-error-body.c	\
 	tests/condition-subtyping-some-error-header.h
 

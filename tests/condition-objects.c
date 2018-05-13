@@ -1,11 +1,11 @@
 /*
   Part of: CCTemplate
-  Contents: test for subtyping of "some error" conditions
+  Contents: tests for condition objects
   Date: May 12, 2018
 
   Abstract
 
-	Test file for subtyping of "some error" conditions.
+	Test file for condition objects.
 
   Copyright (C) 2018 Marco Maggi <marco.maggi-ipsu@poste.it>
 
@@ -25,11 +25,49 @@
 
 
 /** --------------------------------------------------------------------
- ** Subtyping tests.
+ ** Testing condition objects.
  ** ----------------------------------------------------------------- */
 
 void
 test_1_1 (cce_destination_t upper_L)
+/* Test for "cct_condition_some_error_t". */
+{
+  cce_location_t	L[1];
+
+  if (cce_location(L)) {
+    cce_location_t	inner_L[1];
+
+    if (1) { fprintf(stderr, "%s: static message: %s\n", __func__, cce_condition_static_message(cce_condition(L))); }
+
+    if (cce_location(inner_L)) {
+      cce_run_clean_handlers_final(L);
+      cce_run_clean_handlers_raise(inner_L, upper_L);
+    } else {
+      cctests_assert(inner_L, cct_condition_is_some_error(cce_condition(L)));
+      if (1) { fprintf(stderr, "%s: is a CCTemplate some error condition\n", __func__); }
+
+      cctests_assert(inner_L, cce_condition_is_runtime_error(cce_condition(L)));
+      if (1) { fprintf(stderr, "%s: is a CCExceptions runtime error condition\n", __func__); }
+
+      cctests_assert(inner_L, cce_condition_is_root(cce_condition(L)));
+      if (1) { fprintf(stderr, "%s: is a CCExceptions root condition\n", __func__); }
+
+      cce_run_clean_handlers_final(L);
+      cce_run_clean_handlers_final(inner_L);
+    }
+  } else {
+    cce_raise(L, cct_condition_new_some_error());
+  }
+}
+
+
+/** --------------------------------------------------------------------
+ ** Subtyping tests.
+ ** ----------------------------------------------------------------- */
+
+void
+test_2_1 (cce_destination_t upper_L)
+/* Subtyping of "cct_condition_some_error_t". */
 {
   cce_location_t	L[1];
 
@@ -74,9 +112,15 @@ main (void)
 
   cctests_init("tests for condition objects subtyping");
   {
-    cctests_begin_group("subtyping of some error");
+    cctests_begin_group("condition objects");
     {
       cctests_run(test_1_1);
+    }
+    cctests_end_group();
+
+    cctests_begin_group("subtyping of condition objects");
+    {
+      cctests_run(test_2_1);
     }
     cctests_end_group();
   }
