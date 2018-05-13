@@ -36,7 +36,6 @@
 # otherwise the installed packages will  not be found and used correctly
 # by the "configure" script.
 #
-#
 # We need the following in the global environment:
 #
 #   env:
@@ -87,8 +86,14 @@ env:
     - LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
     - PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
     # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-    #   via the "travis encrypt" command using the project repo's public key
-    - secure: ""
+    # via the "travis  encrypt" command using the  project repo's public
+    # key.
+    #
+    # To acquire the security secret key: go to Coverity's project page;
+    # click "Submit Build" then "Configure Travis CI"; scroll the page
+    # until you find the example configuration.
+    #
+    - secure: "KIbtvFmxrp4avCRHpqLR0fTQzD4TBMdNqB0jw2R7GqKV3ooKgxXnvv+cdP5bQkeRFiUc1jQVjNGDJ2XgpRmwcNpFCBnlopMU1yMQHyXrwYPIsEw1ve4GpQaMRx3W9cC4ejnsPqiuf0mgLl27kQ8IkiytWMXGEOPTlz5TY1M0ovE="
 
 #page
 #### Coverity Scan integration
