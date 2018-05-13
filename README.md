@@ -193,9 +193,8 @@ open source coding projects.  We can find this project's dashboard at:
 
 [https://scan.coverity.com/projects/marcomaggi-cctemplate](https://scan.coverity.com/projects/marcomaggi-cctemplate)
 
-Usage of this  service is implemented with make rules;  see the relevant
-section in the file `Makefile.am`.  To access the service a unique token
-is needed: this token is private and is owned by the current maintainer.
+Usage of this service is implemented exploiting the integration services
+of Travis CI.  See the configurration file '.travis.yml'.
 
 
 ### Clang's Static Analyzer
