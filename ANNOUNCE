@@ -12,8 +12,8 @@ library.
 on both Ubuntu GNU+Linux systems and OS X systems.  This package depends
 on the  package CCExceptions, at least  version 0.8.0.  To run  the test
 suite: this package  depends upon the package CCTests,  at least version
-0.2.0-devel.2.  This package is distributed under the GNU General Public
-License version 3.0.
+0.2.0.  This package is distributed under the GNU General Public License
+version 3.0.
 
   The latest release of this package can be downloaded from:
 

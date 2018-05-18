@@ -64,7 +64,7 @@ AM_PROG_AS
 AM_PROG_CC_C_O
 AC_HEADER_STDC
 AC_HEADER_SYS_WAIT
-AC_CHECK_HEADERS([assert.h stdint.h strings.h errno.h stddef.h sys/mman.h sys/resource.h unistd.h])
+AC_CHECK_HEADERS([assert.h stdint.h strings.h errno.h stddef.h unistd.h])
 
 dnl AC_CHECK_SIZEOF(void *)
 dnl AC_C_CONST

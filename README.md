@@ -14,7 +14,7 @@ The package uses the GNU Autotools and it is tested, using Travis CI, on
 both Ubuntu GNU+Linux systems and OS X systems.  This package depends on
 the  package CCExceptions,  at least  version  0.8.0.  To  run the  test
 suite: this package  depends upon the package CCTests,  at least version
-0.2.0-devel.2.
+0.2.0.
 
 
 ## License
