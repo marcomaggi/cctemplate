@@ -42,6 +42,32 @@
  ** Preprocessor macros.
  ** ----------------------------------------------------------------- */
 
+/* Define the "printf()" code to print "size_t" values. */
+#if (4 == MMUX_SIZEOF_SIZE_T)
+#  define MMUX_PRIuSIZE		"u"
+#elif (8 == MMUX_SIZEOF_SIZE_T)
+#  define MMUX_PRIuSIZE		"lu"
+#else
+#  error "unable to determine the size of 'size_t'"
+#endif
+
+/* Define the "printf()" code to print "ssize_t" values. */
+#if (4 == MMUX_SIZEOF_SSIZE_T)
+#  define MMUX_PRIdSIZE		"d"
+#elif (8 == MMUX_SIZEOF_SSIZE_T)
+#  define MMUX_PRIdSIZE		"ld"
+#else
+#  error "unable to determine the size of 'ssize_t'"
+#endif
+
+/* Define the "printf()" code to print "ptrdiff_t" values. */
+#if (4 == MMUX_SIZEOF_PTRDIFF_T)
+#  define MMUX_PRIdPTRDIFF	"d"
+#elif (8 == MMUX_SIZEOF_PTRDIFF_T)
+#  define MMUX_PRIdPTRDIFF	"ld"
+#else
+#  error "unable to determine the size of 'ptrdiff_t'"
+#endif
 
 
 /** --------------------------------------------------------------------
