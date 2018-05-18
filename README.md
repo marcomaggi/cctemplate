@@ -1,7 +1,6 @@
 # cctemplate
 
 [![Build Status](https://travis-ci.org/marcomaggi/cctemplate.svg?branch=master)](https://travis-ci.org/marcomaggi/cctemplate)
-[![Coverity passed](https://scan.coverity.com/projects/12801/badge.svg)](https://scan.coverity.com/projects/marcomaggi-cctemplate)
 [![codecov](https://codecov.io/gh/marcomaggi/cctemplate/branch/master/graph/badge.svg)](https://codecov.io/gh/marcomaggi/cctemplate)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b07b27b019014a2198d498e2e623ad5a)](https://www.codacy.com/app/marcomaggi/cctemplate?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marcomaggi/cctemplate&amp;utm_campaign=Badge_Grade)
 
@@ -185,17 +184,6 @@ project's dashboard at:
 
 Usage of this  service is configured through the  file `.travis.yml` and
 additional scripts are under the directory `meta/travis-ci`.
-
-
-### Coverity Scan
-
-Coverity Scan is  a service providing the results of  static analysis on
-open source coding projects.  We can find this project's dashboard at:
-
-[https://scan.coverity.com/projects/marcomaggi-cctemplate](https://scan.coverity.com/projects/marcomaggi-cctemplate)
-
-Usage of this service is implemented exploiting the integration services
-of Travis CI.  See the configurration file '.travis.yml'.
 
 
 ### Clang's Static Analyzer

@@ -36,11 +36,18 @@
 # otherwise the installed packages will  not be found and used correctly
 # by the "configure" script.
 #
+# Notice that (as of May 17,  2018) Travis CI's run-time system raises a
+# warning if the first directory in the PATH environment variable is not
+# the one  that it sets.   So, for now,  we append the  custom directory
+# rather than prepend it;  this is not the best if we  want to make sure
+# that the executables we install are  found before the one installed by
+# the platform.
+#
 # We need the following in the global environment:
 #
 #   env:
 #     global:
-#       - PATH=/tmp/mine/bin:$PATH;
+#       - PATH=$PATH:/tmp/mine/bin;
 #       - LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
 #       - PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
 #
@@ -48,7 +55,7 @@
 # running the "configure" script as follows:
 #
 #   script: |
-#     export PATH=/tmp/mine/bin:$PATH;
+#     export PATH=$PATH:/tmp/mine/bin;
 #     export LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
 #     export PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
 #     ./configure
@@ -59,8 +66,7 @@
 
 language: c
 
-# We need sudo for Coverity Scan.
-sudo: true
+#sudo: true
 
 # Let's just look at the project's dashboard at Travis CI's site.
 #
@@ -75,63 +81,15 @@ git:
 branches:
   only:
     - master
-    - coverity_scan
 
 # NOTE There must be only *one* env.global key!!!  Otherwise the earlier
 # settings will be ineffective.
 env:
   global:
     - MAKEFLAGS="-j 2"
-    - PATH=/tmp/mine/bin:$PATH;
+    - PATH=$PATH:/tmp/mine/bin
     - LD_LIBRARY_PATH=/tmp/mine/lib:$LD_LIBRARY_PATH;
     - PKG_CONFIG_PATH=/tmp/mine/lib/pkgconfig:$PKG_CONFIG_PATH;
-    # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
-    # via the "travis  encrypt" command using the  project repo's public
-    # key.
-    #
-    # To acquire the security secret key: go to Coverity's project page;
-    # click "Submit Build" then "Configure Travis CI"; scroll the page
-    # until you find the example configuration.
-    #
-    - secure: "KIbtvFmxrp4avCRHpqLR0fTQzD4TBMdNqB0jw2R7GqKV3ooKgxXnvv+cdP5bQkeRFiUc1jQVjNGDJ2XgpRmwcNpFCBnlopMU1yMQHyXrwYPIsEw1ve4GpQaMRx3W9cC4ejnsPqiuf0mgLl27kQ8IkiytWMXGEOPTlz5TY1M0ovE="
-
-#page
-#### Coverity Scan integration
-#
-# This is still in  development (why it is so hard to  set it up?!?).  I
-# would like to:
-#
-# - Run a single scan job when commits are pushed on the "coverity_scan"
-# branch.
-#
-# - Do  not run the scan  when commits are pushed  to branches different
-# from "coverity_scan".
-#
-# - Do not run the full matrix of scripts when commits are pushed on the
-# "coverity_scan" branch.
-#
-
-before_install:
-  - if test "$TRAVIS_OS_NAME" != osx ; then echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-; else true; fi
-
-addons:
-  coverity_scan:
-    project:
-      name: "marcomaggi/cctemplate"
-      description: "Build submitted via Travis CI"
-    notification_email: marco.maggi-ipsu@poste.it
-    # To run the scan we want to execute the following commands:
-    #
-    #   sh ./autogen.sh
-    #   ./configure --enable-maintainer-mode
-    #   make clean
-    #   cov-build make all
-    #
-    # so we put the preparation in "build_command_prepend:" and the
-    # making in "build_command:".
-    build_command_prepend: "sh ./autogen.sh; ./configure --enable-maintainer-mode; make clean"
-    build_command: "make all"
-    branch_pattern: coverity_scan
 
 #page
 #### dependencies management
