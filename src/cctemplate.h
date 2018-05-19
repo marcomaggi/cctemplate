@@ -85,6 +85,7 @@ extern "C" {
  ** ----------------------------------------------------------------- */
 
 #include <ccexceptions.h>
+#include <ccmemory.h>
 
 #if 0
 
