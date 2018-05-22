@@ -63,9 +63,9 @@
 This document describes version @value{VERSION} of @value{PACKAGE}, a C11 language library
 implementing a template library.
 
-This package supports @posix{} platforms.  This package depends on the packages: CCExceptions, at
+The library supports @posix{} platforms.  The library depends on the packages: CCExceptions, at
 least version @value{CCEXCEPTIONS_VERSION}; CCMemory, at least version @value{CCMEMORY_VERSION}.  To
-run the test suite: this package depends upon the package CCTests, at least version
+run the test suite: the package depends upon the package CCTests, at least version
 @value{CCTESTS_VERSION}.
 
 This package is distributed under the terms of the @gnu{} General Public License (@gpl{}).
