@@ -13,7 +13,7 @@ that install a C language library.
 The  library  targets  POSIX  systems.   This  package  depends  on  the
 packages:  CCExceptions,  at least  version  0.8.0;  CCMemory, at  least
 version 0.1.0.   To run the  test suite:  this package depends  upon the
-package CCTests, at least version 0.2.0.
+package CCTests, at least version 0.3.0.
 
 The package uses the GNU Autotools and it is tested, using Travis CI, on
 both Ubuntu GNU+Linux  systems and OS X systems.  The  package relies on
