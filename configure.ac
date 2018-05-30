@@ -111,7 +111,7 @@ dnl page
 
 MMUX_CHECK_PKG_CONFIG_MACROS
 PKG_CHECK_MODULES([CCEXCEPTIONS],[ccexceptions >= 0.8.0])
-PKG_CHECK_MODULES([CCMEMORY],[ccmemory >= 0.1])
+PKG_CHECK_MODULES([CCMEMORY],[ccmemory >= 0.2.0])
 PKG_CHECK_MODULES([CCTESTS],[cctests >= 0.3.0],,[AC_MSG_WARN([package CCTests not found])])
 
 AM_CONDITIONAL([MMUX_TESTING_ENABLED],[test -n "$CCTESTS_LIBS"])
@@ -125,7 +125,7 @@ dnl GSL_LDFLAGS=$(pkg-config gsl --libs)
 dnl AC_CHECK_HEADERS([gmp.h],,[AC_MSG_ERROR([Cannot find libgmp.])])
 dnl AC_CHECK_LIB([gmp],[__gmpn_add],,[AC_MSG_ERROR([Cannot find libgmp.])])
 
-dnl AC_CACHE_SAVE
+AC_CACHE_SAVE
 
 dnl page
 #### finish
