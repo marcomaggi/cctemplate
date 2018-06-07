@@ -79,7 +79,7 @@ cct_condition_new_some_error (void)
 bool
 cct_condition_is_some_error (cce_condition_t const * C)
 {
-  return cce_is_condition(C, &(cct_descriptor_some_error_ptr->descriptor));
+  return cce_condition_is(C, &(cct_descriptor_some_error_ptr->descriptor));
 }
 
 
