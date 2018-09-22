@@ -24,7 +24,7 @@ doc_cctemplate_TEXINFOS	= \
 	doc/gpl-3.0.texi	\
 	doc/fdl-1.3.texi
 
-#page
+
 #### libraries
 
 cctemplate_CURRENT	= @cctemplate_VERSION_INTERFACE_CURRENT@
@@ -44,7 +44,7 @@ libcctemplate_la_SOURCES	= \
 	src/cctemplate-library.c	\
 	src/cctemplate-conditions.c
 
-#page
+
 #### tests
 
 check_PROGRAMS	= \
@@ -77,7 +77,7 @@ tests_condition_objects_SOURCES		= \
 installcheck-local: $(TESTS)
 	@for f in $(TESTS); do $(builddir)/$$f; done
 
-#page
+
 #### testing under GDB
 
 $(builddir)/.gdbinit:
@@ -92,7 +92,7 @@ $(builddir)/.gdbinit:
 gdb-test: $(builddir)/.gdbinit
 	libtool --mode=execute gdb $$FILE
 
-#page
+
 #### Static analysis with Clang's Static Analyzer
 #
 # See the documentation for the command line tool at:
