@@ -3,14 +3,14 @@
 # Installation  script to  run from  the  Travis CI  config file  before
 # attempting a build.
 #
-# Install  CCMemory  under the  directory  "/tmp/mine".   We assume  the
+# Install CCStructs under the directory "/tmp/mine".  We assume the
 # script is run from the top directory of the build tree.
 
-PROGNAME=install-ccmemory.sh
-VERSION=0.2.1-devel.0
-STEM="ccmemory-${VERSION}"
+PROGNAME=install-ccstructs.sh
+VERSION=0.1.0-devel.0
+STEM="ccstructs-${VERSION}"
 ARCHIVE="${STEM}.tar.gz"
-SOURCE_URI="https://github.com/marcomaggi/ccmemory/archive/v${VERSION}.tar.gz"
+SOURCE_URI="https://github.com/marcomaggi/ccstructs/archive/v${VERSION}.tar.gz"
 LOCAL_ARCHIVE="/tmp/${ARCHIVE}"
 TOP_SRCDIR="/tmp/${STEM}"
 
