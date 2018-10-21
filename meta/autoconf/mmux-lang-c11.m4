@@ -28,11 +28,10 @@ AC_DEFUN([MMUX_LANG_C11],[
   AS_VAR_APPEND(AX_CFLAGS,[" -Wall -Wextra"])
   AX_GCC_VERSION
   AS_VAR_IF(GCC,'yes',
-    [AS_CASE("$GCC_VERSION",
-       [7.*],[AS_VAR_APPEND(AX_CFLAGS,[" -pedantic -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict -Wnull-dereference -Wjump-misses-init -Wdouble-promotion -Wshadow -Wformat=2 -Wmisleading-indentation"])],
-       [8.*],[AS_VAR_APPEND(AX_CFLAGS,[" -pedantic -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict -Wnull-dereference -Wjump-misses-init -Wdouble-promotion -Wshadow -Wformat=2 -Wmisleading-indentation"])])])
-  ])
-
+    [AX_APPEND_COMPILE_FLAGS([-Wall -Wextra], [CFLAGS])
+     AX_APPEND_COMPILE_FLAGS([-pedantic -Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict], [CFLAGS])
+     AX_APPEND_COMPILE_FLAGS([-Wnull-dereference -Wjump-misses-init -Wdouble-promotion -Wshadow], [CFLAGS])
+     AX_APPEND_COMPILE_FLAGS([-Wformat=2 -Wmisleading-indentation], [CFLAGS])])])
 
 ### end of file
 # Local Variables:
