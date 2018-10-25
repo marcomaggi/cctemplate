@@ -1,10 +1,9 @@
 ## mmux-lang-c11.m4 --
 #
 # Define the appropriate flags to  use the C11 standard language.  Store
-# the appropriate compiler flags into the variable AX_CFLAGS.
+# the appropriate compiler flags into the variable CFLAGS.
 #
-# If the  C compiler is  GCC: set  the variable AX_CFLAGS  to additional
-# warning flags.
+# If the C compiler is GCC: test and add some compiler specific flags.
 #
 # This macro depends upon the macros:
 #
@@ -15,17 +14,18 @@
 #
 #       AC_LANG([C])
 #       MMUX_LANG_C11
-#       AC_SUBST(AX_CFLAGS)
 #
 
 AC_DEFUN([MMUX_LANG_C11],[
-  AC_REQUIRE([AX_CHECK_COMPILE_FLAG])
-  AC_REQUIRE([AX_GCC_VERSION])
+  AX_REQUIRE_DEFINED([AX_CHECK_COMPILE_FLAG])
+  AX_REQUIRE_DEFINED([AX_APPEND_COMPILE_FLAGS])
+  AX_REQUIRE_DEFINED([AX_GCC_VERSION])
   AC_PROG_CC_C99
-  AX_CHECK_COMPILE_FLAG([-std=c11],[],[AC_MSG_ERROR([*** Compiler does not support -std=c11])],[-pedantic])
+  AX_CHECK_COMPILE_FLAG([-std=c11],
+    [AX_APPEND_FLAG([-std=c11], [CFLAGS])],
+    [AC_MSG_ERROR([*** Compiler does not support -std=c11])],
+    [-pedantic])
 
-  AS_VAR_SET(AX_CFLAGS,[-std=c11])
-  AS_VAR_APPEND(AX_CFLAGS,[" -Wall -Wextra"])
   AX_GCC_VERSION
   AS_VAR_IF(GCC,'yes',
     [AX_APPEND_COMPILE_FLAGS([-Wall -Wextra -pedantic], [CFLAGS])
