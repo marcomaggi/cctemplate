@@ -7,7 +7,7 @@ AC_INIT([CCTemplate],[0.1.0-devel.0],
   [cctemplate],[http://github.com/marcomaggi/cctemplate])
 dnl This is the revision number of this configure.ac
 AC_REVISION([0.1])
-AC_COPYRIGHT([Copyright (c) 2016, 2017, 2018 Marco Maggi <marco.maggi-ipsu@poste.it>
+AC_COPYRIGHT([Copyright (c) 2016-2018 Marco Maggi <marco.maggi-ipsu@poste.it>
 
 This program is free software: you  can redistribute it and/or modify it
 under the  terms of the GNU  General Public License as  published by the
@@ -58,7 +58,6 @@ MMUX_CHECK_TARGET_OS
 
 AC_LANG([C])
 MMUX_LANG_C11
-AC_SUBST(AX_CFLAGS)
 
 AM_PROG_AS
 AM_PROG_CC_C_O

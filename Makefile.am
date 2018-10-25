@@ -6,7 +6,7 @@ EXTRA_DIST		= INSTALL configure.sh		\
 			  meta/slackstuff/config.in	\
 			  meta/slackware/slack-desc.in
 dist_doc_DATA		= README COPYING
-AM_CFLAGS		= -I$(srcdir)/src $(AX_CFLAGS)
+AM_CFLAGS		= -I$(srcdir)/src
 
 ## --------------------------------------------------------------------
 
