@@ -1,17 +1,20 @@
 ## mmux-lang-c11.m4 --
 #
-# Define the appropriate flags to  use the C11 standard language.  Store
-# the appropriate compiler flags into the variable PKG_CFLAGS.  We should
-# add such variables to the compile commands as follows in Makefile.am:
-#
-#   AM_CFLAGS = $(PKG_CFLAGS)
-#
-# If the C compiler is GCC: test and add some compiler specific flags.
+# Define the appropriate  flags to use the C11  standard language.  Such
+# flags are appended to the current definition of the variable "CC".
 #
 # This macro is meant to be used as:
 #
 #       AC_LANG([C])
 #       MMUX_LANG_C11
+#
+# If the variable "GCC" is set to "yes": select additional warning flags
+# to  be handed  to the  C  compiler.  Such  flags are  appended to  the
+# variable MMUX_CFLAGS, which is also configured as substitution (and so
+# it becomes a  Makefile variable).  We should use such  variable to the
+# compile commands as follows, in "Makefile.am":
+#
+#   AM_CFLAGS = $(MMUX_CFLAGS)
 #
 
 AC_DEFUN([MMUX_LANG_C11],[
@@ -24,13 +27,15 @@ AC_DEFUN([MMUX_LANG_C11],[
     [AC_MSG_ERROR([*** Compiler does not support -std=c11])],
     [-pedantic])
 
-  AX_GCC_VERSION
-  AC_SUBST([PKG_CFLAGS])
   AS_VAR_IF(GCC,'yes',
-    [AX_APPEND_COMPILE_FLAGS([-Wall -Wextra -pedantic], [PKG_CFLAGS], [-Werror])
-     AX_APPEND_COMPILE_FLAGS([-Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict], [PKG_CFLAGS], [-Werror])
-     AX_APPEND_COMPILE_FLAGS([-Wnull-dereference -Wjump-misses-init -Wdouble-promotion -Wshadow], [PKG_CFLAGS], [-Werror])
-     AX_APPEND_COMPILE_FLAGS([-Wformat=2 -Wmisleading-indentation], [PKG_CFLAGS], [-Werror])])
+    [AX_GCC_VERSION])
+
+  AC_SUBST([MMUX_CFLAGS])
+  AS_VAR_IF(GCC,'yes',
+    [AX_APPEND_COMPILE_FLAGS([-Wall -Wextra -pedantic], [MMUX_CFLAGS], [-Werror])
+     AX_APPEND_COMPILE_FLAGS([-Wduplicated-cond -Wduplicated-branches -Wlogical-op -Wrestrict], [MMUX_CFLAGS], [-Werror])
+     AX_APPEND_COMPILE_FLAGS([-Wnull-dereference -Wjump-misses-init -Wdouble-promotion -Wshadow], [MMUX_CFLAGS], [-Werror])
+     AX_APPEND_COMPILE_FLAGS([-Wformat=2 -Wmisleading-indentation], [MMUX_CFLAGS], [-Werror])])
   ])
 
 ### end of file
