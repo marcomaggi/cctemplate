@@ -2,9 +2,11 @@ dnl @configure_input@
 dnl
 
 AC_PREREQ([2.69])
-AC_INIT([CCTemplate],[0.1.0-devel.0],
+MMUX_PKG_VERSIONS([0],[1],[0],[devel.0])
+AC_INIT([CCTemplate],[MMUX_PACKAGE_VERSION],
   [marco.maggi-ipsu@poste.it],
   [cctemplate],[http://github.com/marcomaggi/cctemplate])
+MMUX_LIBTOOL_LIBRARY_VERSIONS([cctemplate],1,0,0)
 dnl This is the revision number of this configure.ac
 AC_REVISION([0.1])
 AC_COPYRIGHT([Copyright (c) 2016-2018 Marco Maggi <marco.maggi-ipsu@poste.it>
@@ -39,17 +41,6 @@ AC_PROG_MKDIR_P
 
 LT_PREREQ([2.4])
 LT_INIT
-
-dnl page
-#### libraries interface version
-
-MMUX_LIBTOOL_LIBRARY_VERSIONS([cctemplate],1,0,0)
-
-dnl This is the version stored in the pkg-config data file.
-AC_SUBST([MMUX_PKG_CONFIG_VERSION],[0.1.0])
-
-AS_VAR_SET([SLACKSTUFF_PACKAGE_VERSION],[0.1d0.0])
-AC_SUBST([SLACKSTUFF_PACKAGE_VERSION])
 
 dnl page
 #### basic system inspection
@@ -133,8 +124,8 @@ dnl page
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([Makefile]
    [meta/scripts/cctemplate.pc]
-   [meta/slackstuff/config]
    [meta/slackware/slack-desc])
+MMUX_OUTPUT
 AC_OUTPUT
 
 ### end of file
