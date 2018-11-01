@@ -12,7 +12,7 @@
 #   without any warranty.
 #
 
-dnl page
+
 # SYNOPSIS
 #
 #   MMUX_PKG_VERSIONS([MAJOR_VERSION], [MINOR_VERSION], [PATCH_LEVEL],
@@ -96,7 +96,7 @@ m4_define([MMUX_PKG_VERSIONS],[
   m4_define([MMUX_PACKAGE_PKG_CONFIG_VERSION],MMUX_PACKAGE_MAJOR_VERSION[.]MMUX_PACKAGE_MINOR_VERSION[.]MMUX_PACKAGE_PATCH_LEVEL)
 ])
 
-dnl page
+
 # SYNOPSIS
 #
 #   MMUX_OUTPUT
@@ -124,9 +124,14 @@ AC_DEFUN([MMUX_OUTPUT],[
   # This  is the  version number  to be  used when  generating Slackware
   # packages.
   AC_SUBST([SLACKWARE_PACKAGE_VERSION],MMUX_PACKAGE_MAJOR_VERSION[.]MMUX_PACKAGE_MINOR_VERSION[.]MMUX_PACKAGE_PATCH_LEVEL[]MMUX_PACKAGE_PRERELEASE_TAG)
+
+  # This  is  the build  metadata  string  to  be used  when  generating
+  # Slackware  packages.   It  should  be  something  like  "noarch"  or
+  # "x84_64".
+  AC_SUBST([SLACKWARE_BUILD_METADATA],MMUX_PACKAGE_BUILD_METADATA)
 ])
 
 ### end of file
 # Local Variables:
-# mode: m4
+# mode: autoconf
 # End:
