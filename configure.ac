@@ -6,6 +6,7 @@ MMUX_PKG_VERSIONS([0],[1],[0],[devel.0])
 AC_INIT([CCTemplate],[MMUX_PACKAGE_VERSION],
   [marco.maggi-ipsu@poste.it],
   [cctemplate],[http://github.com/marcomaggi/cctemplate])
+MMUX_INIT
 MMUX_LIBTOOL_LIBRARY_VERSIONS([cctemplate],1,0,0)
 dnl This is the revision number of this configure.ac
 AC_REVISION([0.1])

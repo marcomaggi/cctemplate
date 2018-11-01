@@ -99,6 +99,26 @@ m4_define([MMUX_PKG_VERSIONS],[
 
 # SYNOPSIS
 #
+#   MMUX_INIT
+#
+# DESCRIPTION
+#
+#   Initialisation code for MMUX macros.
+#
+AC_DEFUN([MMUX_INIT],[
+  AC_MSG_NOTICE([package major version:]  MMUX_PACKAGE_MAJOR_VERSION)
+  AC_MSG_NOTICE([package minor version:]  MMUX_PACKAGE_MINOR_VERSION)
+  AC_MSG_NOTICE([package patch level:]    MMUX_PACKAGE_PATCH_LEVEL)
+  AC_MSG_NOTICE([package prerelease tag:] MMUX_PACKAGE_PRERELEASE_TAG)
+  AC_MSG_NOTICE([package build metadata:] MMUX_PACKAGE_BUILD_METADATA)
+  AC_MSG_NOTICE([package version:] MMUX_PACKAGE_VERSION)
+  AC_MSG_NOTICE([package semantic version:] MMUX_PACKAGE_SEMANTIC_VERSION)
+  AC_MSG_NOTICE([package pkg-config module version:] MMUX_PACKAGE_PKG_CONFIG_VERSION)
+])
+
+
+# SYNOPSIS
+#
 #   MMUX_OUTPUT
 #
 # DESCRIPTION
