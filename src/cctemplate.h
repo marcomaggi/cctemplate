@@ -65,7 +65,7 @@ extern "C" {
 #    ifdef __GNUC__
 #      define cct_decl		__attribute__((__dllimport__)) extern
 #    else
-#      define cct_decl		__declspec(dllimport) extern
+#      define cct_decl		__declspec(__dllimport__) extern
 #    endif
 #  endif
 #  define cct_private_decl	extern
