@@ -1,5 +1,5 @@
-dnl @configure_input@
-dnl
+# @configure_input@
+#
 
 AC_PREREQ([2.69])
 MMUX_PKG_VERSIONS([0],[1],[0],[devel.0])
@@ -43,7 +43,7 @@ AC_PROG_MKDIR_P
 LT_PREREQ([2.4])
 LT_INIT
 
-dnl page
+
 #### basic system inspection
 
 MMUX_CHECK_TARGET_OS
@@ -86,7 +86,7 @@ dnl AC_PROG_CXX
 
 AC_CACHE_SAVE
 
-dnl page
+
 #### checks for library functions
 
 dnl AC_FUNC_MALLOC
@@ -97,7 +97,7 @@ dnl AC_CHECK_FUNCS([getenv])
 
 dnl AC_CACHE_SAVE
 
-dnl page
+
 #### external libraries
 
 MMUX_CHECK_PKG_CONFIG_MACROS
@@ -119,7 +119,7 @@ dnl AC_CHECK_LIB([gmp],[__gmpn_add],,[AC_MSG_ERROR([Cannot find libgmp.])])
 
 AC_CACHE_SAVE
 
-dnl page
+
 #### finish
 
 AC_CONFIG_HEADERS([config.h])
@@ -130,7 +130,3 @@ MMUX_OUTPUT
 AC_OUTPUT
 
 ### end of file
-# Local Variables:
-# mode: autoconf
-# page-delimiter: "^dnl page"
-# End:
