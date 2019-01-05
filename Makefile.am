@@ -12,7 +12,8 @@ AM_ETAGSFLAGS		= \
 	$(CCMEMORY_HEADER)		\
 	$(CCSTRUCTS_HEADER)		\
 	$(CCTESTS_HEADER)		\
-	--regex='{c}/\(ccname_\(init\|new\|final\|delete\|release\|table\|iface_\(new\|table\|method\)\)([^)]+)\)/\1/'
+	--regex='{c}/"\\_<\\(ccname_\\(?:alloc\\|delete\\|final\\|i\\(?:face_\\(?:method\\(?:_type\\)?\\|new\\|table\\(?:_type\\)?\\)\\|nit\\)\\|method\\(?:_type\\)?\\|new\\|\\(?:releas\\|tabl\\(?:e_typ\\)?\\)e\\)\\)\\_>"/'
+
 
 ## --------------------------------------------------------------------
 
