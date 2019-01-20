@@ -3,17 +3,9 @@
 ACLOCAL_AMFLAGS		= -I meta/autotools
 AUTOMAKE_OPTIONS	= foreign
 EXTRA_DIST		= INSTALL configure.sh		\
-			  meta/slackstuff/config.in	\
 			  meta/slackware/slack-desc.in
 dist_doc_DATA		= README COPYING
 AM_CFLAGS		= $(MMUX_CFLAGS) -I$(srcdir)/src
-AM_ETAGSFLAGS		= \
-	$(CCEXCEPTIONS_HEADER)		\
-	$(CCMEMORY_HEADER)		\
-	$(CCSTRUCTS_HEADER)		\
-	$(CCTESTS_HEADER)		\
-	--regex='{c}/"\\_<\\(ccname_\\(?:alloc\\|delete\\|final\\|i\\(?:face_\\(?:method\\(?:_type\\)?\\|new\\|table\\(?:_type\\)?\\)\\|nit\\)\\|method\\(?:_type\\)?\\|new\\|\\(?:releas\\|tabl\\(?:e_typ\\)?\\)e\\)\\)\\_>"/'
-
 
 ## --------------------------------------------------------------------
 
@@ -87,43 +79,8 @@ installcheck-local: $(TESTS)
 	@for f in $(TESTS); do $(builddir)/$$f; done
 
 
-#### testing under GDB
+#### common rules
 
-$(builddir)/.gdbinit:
-	ln -sv "$(top_srcdir)/gdbinit" "$(builddir)/.gdbinit"
-
-# This rule is meant to be used as:
-#
-#   $ make all gdb-test FILE=tests/inspection CFLAGS='-g'
-#
-# after having created an appropriate file "$(top_srcdir)/.gdbinit".
-#
-gdb-test: $(builddir)/.gdbinit
-	libtool --mode=execute gdb $$FILE
-
-
-#### Static analysis with Clang's Static Analyzer
-#
-# See the documentation for the command line tool at:
-#
-#    <http://clang-analyzer.llvm.org/scan-build.html>
-#
-# To run the tool we must do:
-#
-#    $ make clean
-#    $ make clang-static-analysis
-#
-# The  program  "scan-build"  works  by  overriding  the  CC  and  CXX
-# environment variables.  Automake defines CXX as:
-#
-#    CXX = g++ -std=c++11
-#
-# so we override CXXFLAGS to include the language specification.
-#
-
-.PHONY: clang-static-analysis
-
-clang-static-analysis:
-	scan-build make CXXFLAGS='-std=c++11'
+include $(top_srcdir)/meta/automake/mmux-makefile-rules
 
 ### end of file
