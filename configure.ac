@@ -8,7 +8,6 @@ AC_INIT([CCTemplate],[MMUX_PACKAGE_VERSION],
   [cctemplate],[http://github.com/marcomaggi/cctemplate])
 MMUX_INIT
 MMUX_LIBTOOL_LIBRARY_VERSIONS([cctemplate],1,0,0)
-dnl This is the revision number of this configure.ac
 AC_REVISION([0.1])
 AC_COPYRIGHT([Copyright (c) 2016-2019 Marco Maggi <marco.maggi-ipsu@poste.it>
 
