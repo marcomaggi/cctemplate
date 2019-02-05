@@ -39,7 +39,6 @@
 
 @set CCEXCEPTIONS_VERSION       0.8.0
 @set CCMEMORY_VERSION           0.2.1
-@set CCSTRUCTS_VERSION          0.1.0
 @set CCTESTS_VERSION            0.3.0
 
 @set GITHUB_URL                 @url{https://github.com/marcomaggi/@value{PACKAGE_NICKNAME}}
@@ -195,7 +194,7 @@ This package installs a data file for @command{pkg-config}, so when searching fo
 library with the @gnu{} Autotools, we can add the following macro use to @file{configure.ac}:
 
 @example
-PKG_CHECK_MODULES([CCTEMPLATE],[cctemplate >= 0.1])
+PKG_CHECK_MODULES([CCTEMPLATE],[cctemplate >= 0.1.0])
 @end example
 
 @noindent
@@ -232,7 +231,7 @@ AC_CHECK_HEADERS([cctemplate.h],,
 
 @c page
 @node overview ccnames
-@section Generated function names.
+@section Generated function names
 
 
 @value{PACKAGE} uses the facilities of the package CCStructs to generate function names for ``well
