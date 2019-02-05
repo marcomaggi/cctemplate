@@ -23,7 +23,8 @@ both Ubuntu GNU+Linux  systems and OS X systems.  The  package relies on
 
 ## License
 
-Copyright (c) 2012, 2015-2018 Marco Maggi <marco.maggi-ipsu@poste.it><br/>
+Copyright (c) 2012, 2015-2019 Marco Maggi<br/>
+`marco.maggi-ipsu@poste.it`<br/>
 All rights reserved.
 
 This program is free software: you  can redistribute it and/or modify it
@@ -231,4 +232,3 @@ project's dashboard at:
 
 Usage of this service is  implemented through direct integration between
 GitHub and Codacy sites.
-
