@@ -4,7 +4,6 @@
 [![codecov](https://codecov.io/gh/marcomaggi/cctemplate/branch/master/graph/badge.svg)](https://codecov.io/gh/marcomaggi/cctemplate)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/b07b27b019014a2198d498e2e623ad5a)](https://www.codacy.com/app/marcomaggi/cctemplate?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=marcomaggi/cctemplate&amp;utm_campaign=Badge_Grade)
 
-
 ## Introduction
 
 This is  a template project, to  be used as starting  point for packages
@@ -19,7 +18,6 @@ suite: this package  depends upon the package CCTests,  at least version
 The package uses the GNU Autotools and it is tested, using Travis CI, on
 both Ubuntu GNU+Linux  systems and OS X systems.  The  package relies on
 `pkg-config` to find the dependencies installed on the system.
-
 
 ## License
 
@@ -39,7 +37,6 @@ General Public License for more details.
 
 You should have received a copy  of the GNU General Public License along
 with this program.  If not, see <http://www.gnu.org/licenses/>.
-
 
 ## Install
 
@@ -131,12 +128,10 @@ $ make html
 $ make install-html
 ```
 
-
 ## Credits
 
 The  stuff was  written by  Marco Maggi.   If this  package exists  it's
 because of the great GNU software tools that he uses all the time.
-
 
 ## Bugs, vulnerabilities and contributions
 
@@ -144,7 +139,6 @@ Bug  and vulnerability  reports are  appreciated, all  the vulnerability
 reports  are  public; register  them  using  the  Issue Tracker  at  the
 project's GitHub  site.  For  contributions and  patches please  use the
 Pull Requests feature at the project's GitHub site.
-
 
 ## Resources
 
@@ -184,7 +178,6 @@ the package CCTests is available at:
 
 [https://github.com/marcomaggi/cctests/](https://github.com/marcomaggi/cctests/)
 
-
 ## Badges and static analysis
 
 ### Travis CI
@@ -198,7 +191,6 @@ project's dashboard at:
 Usage of this  service is configured through the  file `.travis.yml` and
 additional scripts are under the directory `meta/travis-ci`.
 
-
 ### Clang's Static Analyzer
 
 The Clang Static Analyzer is a source code analysis tool that finds bugs
@@ -210,7 +202,6 @@ and we can find it at:
 Usage of this  service is implemented with make rules;  see the relevant
 section in the file `Makefile.am`.
 
-
 ### Codecov
 
 Codecov is a service providing code  coverage reports.  We can find this
@@ -221,7 +212,6 @@ project's dashboard at:
 Usage of  this service is  implemented through direct  interface between
 GitHub and Codecov  sites; it configured through  the file `codecov.yml`
 and appropriate entries in Travis CI's matrix of builds.
-
 
 ### Codacy
 
