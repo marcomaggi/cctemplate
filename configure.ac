@@ -47,6 +47,8 @@ LT_INIT
 
 MMUX_CHECK_TARGET_OS
 
+AX_IS_RELEASE([git-directory])
+
 AC_LANG([C])
 MMUX_LANG_C11
 
