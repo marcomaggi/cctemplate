@@ -37,7 +37,7 @@ cctemplate_AGE		= @cctemplate_VERSION_INTERFACE_AGE@
 include_HEADERS		= src/cctemplate.h
 
 lib_LTLIBRARIES			= libcctemplate.la
-libcctemplate_la_CPPFLAGS	= $(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS)
+libcctemplate_la_CFLAGS		= $(AM_CFLAGS) $(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS)
 libcctemplate_la_LDFLAGS	= \
 	-version-info $(cctemplate_CURRENT):$(cctemplate_REVISION):$(cctemplate_AGE) \
 	$(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS)
@@ -58,17 +58,19 @@ if MMUX_TESTING_ENABLED
 TESTS				= $(check_PROGRAMS)
 endif
 
-cctemplate_tests_cppflags	= -I$(srcdir)/src -I$(srcdir)/tests \
-	$(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS) $(CCTESTS_CFLAGS)
+cctemplate_tests_cppflags	= $(AM_CPPFLAGS) -I$(srcdir)/tests
+cctemplate_tests_cflags		= $(AM_CFLAGS) $(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS) $(CCTESTS_CFLAGS)
 cctemplate_tests_ldadd		= libcctemplate.la \
 	$(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS) $(CCTESTS_LIBS)
 
 ## --------------------------------------------------------------------
 
 tests_version_CPPFLAGS		= $(cctemplate_tests_cppflags)
+tests_version_CFLAGS		= $(cctemplate_tests_cflags)
 tests_version_LDADD		= $(cctemplate_tests_ldadd)
 
 tests_condition_objects_CPPFLAGS	= $(cctemplate_tests_cppflags)
+tests_condition_objects_CFLAGS		= $(cctemplate_tests_cflags)
 tests_condition_objects_LDADD		= $(cctemplate_tests_ldadd)
 tests_condition_objects_SOURCES		= \
 	tests/condition-objects.c			\
