@@ -61,8 +61,7 @@ endif
 
 cctemplate_tests_cppflags	= $(AM_CPPFLAGS) -I$(srcdir)/tests
 cctemplate_tests_cflags		= $(AM_CFLAGS) $(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS) $(CCTESTS_CFLAGS)
-cctemplate_tests_ldadd		= libcctemplate.la \
-	$(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS) $(CCTESTS_LIBS)
+cctemplate_tests_ldadd		= libcctemplate.la $(CCTESTS_LIBS)
 
 ## --------------------------------------------------------------------
 
