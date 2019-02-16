@@ -24,7 +24,7 @@ AM_MAKEINFOHTMLFLAGS	= --split=node -c WORDS_IN_PAGE=0 \
 info_TEXINFOS		= doc/cctemplate.texi
 doc_cctemplate_TEXINFOS	= \
 	doc/macros.texi		\
-	doc/gpl-3.0.texi	\
+	doc/lgpl-3.0.texi	\
 	doc/fdl-1.3.texi
 
 
@@ -37,6 +37,7 @@ cctemplate_AGE		= @cctemplate_VERSION_INTERFACE_AGE@
 include_HEADERS		= src/cctemplate.h
 
 lib_LTLIBRARIES			= libcctemplate.la
+libcctemplate_la_CPPFLAGS	= $(AM_CPPFLAGS)
 libcctemplate_la_CFLAGS		= $(AM_CFLAGS) $(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS)
 libcctemplate_la_LDFLAGS	= \
 	-version-info $(cctemplate_CURRENT):$(cctemplate_REVISION):$(cctemplate_AGE) \

@@ -5,22 +5,21 @@
 
   Abstract
 
+	This is the public  header file of the library, defining  the public API.  It
+	must be included in all the code that uses the library.
 
+  Copyright (C) 2012, 2017, 2018, 2019 Marco Maggi <marco.maggi-ipsu@poste.it>
 
-  Copyright (C) 2012, 2017, 2018 Marco Maggi <marco.maggi-ipsu@poste.it>
+  This program is free  software: you can redistribute it and/or  modify it under the
+  terms of the  GNU Lesser General Public  License as published by  the Free Software
+  Foundation, either version 3 of the License, or (at your option) any later version.
 
-  This program is  free software: you can redistribute  it and/or modify
-  it under the  terms of the GNU General Public  License as published by
-  the Free Software Foundation, either  version 3 of the License, or (at
-  your option) any later version.
+  This program  is distributed in the  hope that it  will be useful, but  WITHOUT ANY
+  WARRANTY; without  even the implied  warranty of  MERCHANTABILITY or FITNESS  FOR A
+  PARTICULAR PURPOSE.  See the GNU Lesser General Public License for more details.
 
-  This program  is distributed in the  hope that it will  be useful, but
-  WITHOUT   ANY  WARRANTY;   without  even   the  implied   warranty  of
-  MERCHANTABILITY  or FITNESS  FOR A  PARTICULAR PURPOSE.   See  the GNU
-  General Public License for more details.
-
-  You  should have received  a copy  of the  GNU General  Public License
-  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+  You should have received a copy of the GNU Lesser General Public License along with
+  this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #ifndef CCTEMPLATE_H
@@ -65,7 +64,7 @@ extern "C" {
 #    ifdef __GNUC__
 #      define cct_decl		__attribute__((__dllimport__)) extern
 #    else
-#      define cct_decl		__declspec(__dllimport__) extern
+#      define cct_decl		__declspec(dllimport) extern
 #    endif
 #  endif
 #  define cct_private_decl	extern
@@ -86,6 +85,7 @@ extern "C" {
 
 #include <ccexceptions.h>
 #include <ccmemory.h>
+#include <ccstructs.h>
 
 #if 0
 
@@ -157,6 +157,9 @@ cct_decl cce_condition_t const * cct_condition_new_some_error (void)
   __attribute__((__returns_nonnull__));
 
 cct_decl bool cct_condition_is_some_error (cce_condition_t const * C)
+  __attribute__((__nonnull__(1)));
+
+cct_decl void cce_descriptor_set_parent_to(cct_condition_some_error_t) (cce_descriptor_t * const D)
   __attribute__((__nonnull__(1)));
 
 
