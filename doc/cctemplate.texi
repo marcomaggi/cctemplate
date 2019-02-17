@@ -39,6 +39,7 @@
 
 @set CCEXCEPTIONS_VERSION       0.8.0
 @set CCMEMORY_VERSION           0.2.1
+@set CCSTRUCTS_VERSION          0.2.0
 @set CCTESTS_VERSION            0.3.0
 
 @set GITHUB_URL                 @url{https://github.com/marcomaggi/@value{PACKAGE_NICKNAME}}
