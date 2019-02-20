@@ -22,6 +22,7 @@ AM_MAKEINFOHTMLFLAGS	= --split=node -c WORDS_IN_PAGE=0 \
 info_TEXINFOS		= doc/cctemplate.texi
 doc_cctemplate_TEXINFOS	= \
 	doc/overview-linking.texi	\
+	doc/overview-ccnames.texi	\
 	doc/overview-ccexceptions.texi	\
 	doc/overview-ccmemory.texi	\
 	doc/macros.texi			\
