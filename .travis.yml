@@ -104,9 +104,12 @@ git:
 # NOTE  There  must  be only  *one*  env.global  key!!!   Otherwise  the earlier  settings  will  be
 # ineffective.
 #
+# Setting the variable VERBOSE causes "make check" to output the file "test-suite.log".
+#
 env:
   global:
     - MAKEFLAGS="-j 2"
+    - VERBOSE=1
     - PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib64/pkgconfig:/usr/local/share/pkgconfig:$PKG_CONFIG_PATH;
     - ACLOCAL_PATH=/usr/local/share/aclocal:$ACLOCAL_PATH;
 
