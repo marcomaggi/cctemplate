@@ -73,7 +73,7 @@ then script_error 'error building all %s' "$STEM"
 fi
 
 script_verbose '(umask 0; sudo make install)'
-if ! (umask 0; sudo make -n install)
+if ! (umask 0; sudo make install)
 then script_error 'error installing %s' "$STEM"
 fi
 
