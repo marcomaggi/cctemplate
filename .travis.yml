@@ -110,6 +110,8 @@ env:
   global:
     - MAKEFLAGS="-j 2"
     - VERBOSE=1
+    - LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH;
+    - LD_RUN_PATH=/usr/local/lib:$LD_RUN_PATH;
     - PKG_CONFIG_PATH=/usr/local/lib/pkgconfig:/usr/local/lib64/pkgconfig:/usr/local/share/pkgconfig:$PKG_CONFIG_PATH;
     - ACLOCAL_PATH=/usr/local/share/aclocal:$ACLOCAL_PATH;
 

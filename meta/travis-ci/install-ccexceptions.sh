@@ -62,8 +62,8 @@ if ! sh autogen.sh
 then script_error 'error generating configuration %s' "$STEM"
 fi
 
-script_verbose './configure --prefix=/tmp/mine --enable-maintainer-mode'
-if ! ./configure --prefix="$prefix" --enable-maintainer-mode
+script_verbose './configure --prefix=/tmp/mine --enable-maintainer-mode --enable-shared --disable-static'
+if ! ./configure --prefix="$prefix" --enable-maintainer-mode --enable-shared --disable-static
 then script_error 'error configuring %s' "$STEM"
 fi
 
