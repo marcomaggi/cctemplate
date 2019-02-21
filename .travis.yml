@@ -118,6 +118,8 @@ install:
   - ./meta/travis-ci/install-pkg-config.sh;
   - ./meta/travis-ci/install-autoconf.sh;
   - ./meta/travis-ci/install-automake.sh;
+  - ./meta/travis-ci/install-texinfo.sh;
+  - ./meta/travis-ci/install-re2.sh;
   - ./meta/travis-ci/install-ccexceptions.sh
   - ./meta/travis-ci/install-ccmemory.sh
   - ./meta/travis-ci/install-ccstructs.sh
@@ -229,8 +231,5 @@ matrix:
       script: "./configure --enable-maintainer-mode CFLAGS='-O0 --coverage'; make all; make check;"
       after_success:
         bash <(curl -s https://codecov.io/bash) -xgcov-8
-
-#page
-#### done
 
 ### end of file
