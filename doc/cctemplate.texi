@@ -44,17 +44,17 @@
 
 @c ------------------------------------------------------------
 
-@set PackageAutoconfPrefix            CCTEMPLATE
-@set PackagePkgconfigModule           cctemplate
-@set PackageLibsVar                   @env{CCTEMPLATE_LIBS}
-@set PackageCflagsVar                 @env{CCTEMPLATE_CFLAGS}
+@set PackageAutoconfPrefix              CCTEMPLATE
+@set PackagePkgconfigModule             cctemplate
+@set PackageLibsVar                     @env{CCTEMPLATE_LIBS}
+@set PackageCflagsVar                   @env{CCTEMPLATE_CFLAGS}
 @c This is the stem of the library in "libcctemplate.so".
-@set PackageLibstem                    cctemplate
-@set PackageApiPrefixLower           cct_
-@set PackageApiPrefixUpper           CCT_
+@set PackageLibstem                     cctemplate
+@set PackageApiPrefixLower              cct_
+@set PackageApiPrefixUpper              CCT_
 
-@set PackageHeader                     cctemplate.h
-@set PackageHeader_FILE                @file{@value{PackageHeader}}
+@set PackageHeader                      cctemplate.h
+@set PackageHeaderFile                  @file{@value{PackageHeader}}
 
 @set GithubUrl                 @url{https://github.com/marcomaggi/@value{PACKAGE_NICKNAME}}
 @set BitbucketUrl              @url{https://bitbucket.org/marcomaggi/@value{PACKAGE_NICKNAME}}
