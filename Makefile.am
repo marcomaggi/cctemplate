@@ -43,7 +43,7 @@ libcctemplate_la_CPPFLAGS	= $(AM_CPPFLAGS)
 libcctemplate_la_CFLAGS		= $(AM_CFLAGS) $(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS)
 libcctemplate_la_LDFLAGS	= \
 	-version-info $(cctemplate_CURRENT):$(cctemplate_REVISION):$(cctemplate_AGE) \
-	$(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS)
+	$(AM_LDFLAGS) $(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS)
 libcctemplate_la_SOURCES	= \
 	src/cctemplate.h		\
 	src/cctemplate-internals.h	\
@@ -63,7 +63,7 @@ endif
 
 cctemplate_tests_cppflags	= $(AM_CPPFLAGS) -I$(srcdir)/tests
 cctemplate_tests_cflags		= $(AM_CFLAGS) $(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS) $(CCTESTS_CFLAGS)
-cctemplate_tests_ldadd		= libcctemplate.la $(CCTESTS_LIBS)
+cctemplate_tests_ldadd		= $(AM_LDFLAGS) libcctemplate.la $(CCTESTS_LIBS)
 
 ## --------------------------------------------------------------------
 
