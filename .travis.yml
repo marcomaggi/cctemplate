@@ -155,7 +155,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - texinfo
             - gcc-5
       script: "./configure --enable-maintainer-mode; make all; make check;"
 
@@ -168,7 +167,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - texinfo
             - gcc-6
       script: "./configure --enable-maintainer-mode; make all; make check;"
 
@@ -181,7 +179,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - texinfo
             - gcc-7
       script: "./configure --enable-maintainer-mode; make all; make check;"
 
@@ -194,7 +191,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - texinfo
             - gcc-8
       script: "./configure --enable-maintainer-mode; make all; make check;"
 
@@ -206,7 +202,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - texinfo
       compiler: clang
       script: "./configure --enable-maintainer-mode CFLAGS='-Wno-unknown-attributes'; make all; make check;"
 
@@ -231,7 +226,6 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - texinfo
             - gcc-8
       script: "./configure --enable-maintainer-mode CFLAGS='-O0 --coverage'; make all; make check;"
       after_success:
