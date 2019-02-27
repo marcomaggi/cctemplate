@@ -32,18 +32,17 @@ doc_cctemplate_TEXINFOS	= \
 
 #### libraries
 
-cctemplate_CURRENT	= @cctemplate_VERSION_INTERFACE_CURRENT@
-cctemplate_REVISION	= @cctemplate_VERSION_INTERFACE_REVISION@
-cctemplate_AGE		= @cctemplate_VERSION_INTERFACE_AGE@
+cctemplate_CURRENT		= @cctemplate_VERSION_INTERFACE_CURRENT@
+cctemplate_REVISION		= @cctemplate_VERSION_INTERFACE_REVISION@
+cctemplate_AGE			= @cctemplate_VERSION_INTERFACE_AGE@
+cctemplate_LINKER_VERSION	= -version-info $(cctemplate_CURRENT):$(cctemplate_REVISION):$(cctemplate_AGE)
 
 include_HEADERS		= src/cctemplate.h
 
 lib_LTLIBRARIES			= libcctemplate.la
 libcctemplate_la_CPPFLAGS	= $(AM_CPPFLAGS)
 libcctemplate_la_CFLAGS		= $(AM_CFLAGS) $(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS)
-libcctemplate_la_LDFLAGS	= \
-	-version-info $(cctemplate_CURRENT):$(cctemplate_REVISION):$(cctemplate_AGE) \
-	$(AM_LDFLAGS) $(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS)
+libcctemplate_la_LDFLAGS	= $(cctemplate_LINKER_VERSION) $(AM_LDFLAGS) $(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS)
 libcctemplate_la_SOURCES	= \
 	src/cctemplate.h		\
 	src/cctemplate-internals.h	\
@@ -63,7 +62,7 @@ endif
 
 cctemplate_tests_cppflags	= $(AM_CPPFLAGS) -I$(srcdir)/tests
 cctemplate_tests_cflags		= $(AM_CFLAGS) $(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS) $(CCTESTS_CFLAGS)
-cctemplate_tests_ldadd		= $(AM_LDFLAGS) libcctemplate.la $(CCTESTS_LIBS)
+cctemplate_tests_ldadd		= $(AM_LDFLAGS) libcctemplate.la $(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS) $(CCTESTS_LIBS)
 
 ## --------------------------------------------------------------------
 
