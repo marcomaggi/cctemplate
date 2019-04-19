@@ -8,7 +8,7 @@
 	This is the public  header file of the library, defining  the public API.  It
 	must be included in all the code that uses the library.
 
-  Copyright (C) 2012, 2017, 2018, 2019 Marco Maggi <marco.maggi-ipsu@poste.it>
+  Copyright (C) 2012, 2017-2019 Marco Maggi <marco.maggi-ipsu@poste.it>
 
   This program is free  software: you can redistribute it and/or  modify it under the
   terms of the  GNU Lesser General Public  License as published by  the Free Software
@@ -86,6 +86,7 @@ extern "C" {
 #include <ccexceptions.h>
 #include <ccmemory.h>
 #include <ccstructs.h>
+#include <ccstrings.h>
 
 #if 0
 
@@ -148,7 +149,12 @@ struct cct_condition_some_error_t {
   cce_condition_runtime_error_t		runtime_error;
 };
 
+cct_decl void cce_descriptor_set_parent_to(cct_condition_some_error_t) (cce_descriptor_t * const D)
+  __attribute__((__nonnull__(1)));
+
 cct_decl cct_descriptor_some_error_t const * const cct_descriptor_some_error_ptr;
+
+/* ------------------------------------------------------------------ */
 
 cct_decl void cct_condition_init_some_error (cct_condition_some_error_t * C)
   __attribute__((__nonnull__(1)));
@@ -157,9 +163,6 @@ cct_decl cce_condition_t const * cct_condition_new_some_error (void)
   __attribute__((__returns_nonnull__));
 
 cct_decl bool cct_condition_is_some_error (cce_condition_t const * C)
-  __attribute__((__nonnull__(1)));
-
-cct_decl void cce_descriptor_set_parent_to(cct_condition_some_error_t) (cce_descriptor_t * const D)
   __attribute__((__nonnull__(1)));
 
 

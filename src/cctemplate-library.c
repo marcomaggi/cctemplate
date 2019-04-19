@@ -67,6 +67,7 @@ cct_library_init (void)
   if (to_be_initialised) {
     to_be_initialised = false;
     cct_condition_init_module();
+    ccstr_library_init();
   }
 }
 

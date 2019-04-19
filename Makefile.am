@@ -41,8 +41,10 @@ include_HEADERS		= src/cctemplate.h
 
 lib_LTLIBRARIES			= libcctemplate.la
 libcctemplate_la_CPPFLAGS	= $(AM_CPPFLAGS)
-libcctemplate_la_CFLAGS		= $(AM_CFLAGS) $(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS)
-libcctemplate_la_LDFLAGS	= $(cctemplate_LINKER_VERSION) $(AM_LDFLAGS) $(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS)
+libcctemplate_la_CFLAGS		= $(AM_CFLAGS) \
+	$(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS) $(CCSTRINGS_CFLAGS)
+libcctemplate_la_LDFLAGS	= $(cctemplate_LINKER_VERSION) $(AM_LDFLAGS) \
+	$(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS) $(CCSTRINGS_LIBS)
 libcctemplate_la_SOURCES	= \
 	src/cctemplate.h		\
 	src/cctemplate-internals.h	\
@@ -61,8 +63,10 @@ TESTS				= $(check_PROGRAMS)
 endif
 
 cctemplate_tests_cppflags	= $(AM_CPPFLAGS) -I$(srcdir)/tests
-cctemplate_tests_cflags		= $(AM_CFLAGS) $(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS) $(CCTESTS_CFLAGS)
-cctemplate_tests_ldadd		= $(AM_LDFLAGS) libcctemplate.la $(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS) $(CCTESTS_LIBS)
+cctemplate_tests_cflags		= $(AM_CFLAGS) \
+	$(CCEXCEPTIONS_CFLAGS) $(CCMEMORY_CFLAGS) $(CCSTRUCTS_CFLAGS) $(CCSTRINGS_CFLAGS) $(CCTESTS_CFLAGS)
+cctemplate_tests_ldadd		= $(AM_LDFLAGS) libcctemplate.la \
+	$(CCEXCEPTIONS_LIBS) $(CCMEMORY_LIBS) $(CCSTRUCTS_LIBS) $(CCSTRINGS_LIBS) $(CCTESTS_LIBS)
 
 ## --------------------------------------------------------------------
 

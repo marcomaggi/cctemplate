@@ -105,7 +105,8 @@ PKG_INSTALLDIR
 MMUX_CHECK_PKG_CONFIG_MACROS
 PKG_CHECK_MODULES([CCEXCEPTIONS],[ccexceptions >= 0.8.0])
 PKG_CHECK_MODULES([CCMEMORY],[ccmemory >= 0.2.1])
-PKG_CHECK_MODULES([CCSTRUCTS],[ccstructs >= 0.2.0])
+PKG_CHECK_MODULES([CCSTRUCTS],[ccstructs >= 0.3.0])
+PKG_CHECK_MODULES([CCSTRINGS],[ccstrings >= 0.1.0])
 PKG_CHECK_MODULES([CCTESTS],[cctests >= 0.3.0],,[AC_MSG_WARN([package CCTests not found])])
 
 AM_CONDITIONAL([MMUX_TESTING_ENABLED],[test -n "$CCTESTS_LIBS"])
@@ -114,6 +115,7 @@ MMUX_PKG_CONFIG_FIND_INCLUDE_FILE([ccexceptions],[ccexceptions.h])
 #MMUX_PKG_CONFIG_FIND_INCLUDE_FILE([ccexceptions],[ccnames.h])
 MMUX_PKG_CONFIG_FIND_INCLUDE_FILE([ccmemory],[ccmemory.h])
 MMUX_PKG_CONFIG_FIND_INCLUDE_FILE([ccstructs],[ccstructs.h])
+MMUX_PKG_CONFIG_FIND_INCLUDE_FILE([ccstrings],[ccstrings.h])
 MMUX_PKG_CONFIG_FIND_INCLUDE_FILE([cctests],[cctests.h])
 
 dnl AX_PTHREAD(,[AC_MSG_ERROR([cannot find pthread library],[1])])
