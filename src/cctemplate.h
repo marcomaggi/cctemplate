@@ -142,28 +142,28 @@ typedef struct cct_descriptor_some_error_t	cct_descriptor_some_error_t;
 typedef struct cct_condition_some_error_t	cct_condition_some_error_t;
 
 struct cct_descriptor_some_error_t {
-  cce_descriptor_t			descriptor;
+  cce_descriptor_t	descriptor;
 };
 
 struct cct_condition_some_error_t {
-  cce_condition_runtime_error_t		runtime_error;
+  cce_condition_runtime_error_t	runtime_error;
+  int *				data;
 };
 
-cct_decl void cce_descriptor_set_parent_to(cct_condition_some_error_t) (cce_descriptor_t * const D)
+extern void cce_descriptor_set_parent_to(cct_descriptor_some_error_t) (cce_descriptor_t * D)
   __attribute__((__nonnull__(1)));
-
-cct_decl cct_descriptor_some_error_t const * const cct_descriptor_some_error_ptr;
 
 /* ------------------------------------------------------------------ */
 
-cct_decl void cct_condition_init_some_error (cct_condition_some_error_t * C)
+extern void cct_condition_init_some_error (cce_destination_t L, cct_condition_some_error_t * C, int the_data)
   __attribute__((__nonnull__(1)));
 
-cct_decl cce_condition_t const * cct_condition_new_some_error (void)
-  __attribute__((__returns_nonnull__));
+extern cce_condition_t const * cct_condition_new_some_error (cce_destination_t L, int the_data)
+  __attribute__((__nonnull__(1),__returns_nonnull__));
 
-cct_decl bool cct_condition_is_some_error (cce_condition_t const * C)
-  __attribute__((__nonnull__(1)));
+extern bool cct_condition_is_some_error (cce_condition_t const * C)
+  __attribute__((__pure__,__nonnull__(1)));
+
 
 
 /** --------------------------------------------------------------------

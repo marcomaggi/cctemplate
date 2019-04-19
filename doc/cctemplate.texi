@@ -6,6 +6,7 @@
 
 @include version.texi
 @include macros.texi
+@include ccexceptions-macros.texi
 
 @c page
 @c ------------------------------------------------------------
@@ -264,54 +265,45 @@ Return an integer representing the library interface current age.
 
 
 @menu
-* conditions error::            An error condition.
+* conditions some error::       Some error condition.
 @end menu
 
 @c page
-@node conditions error
-@section An error condition
+@node conditions some error
+@section Some error condition
+
+
+@cindex Some error, exceptional condition
+@cindex Exceptional conditions, some error
 
 
 The @dfn{some error exceptional--condition object} has the purpose of describing an exceptional
 condition caused by some error.
 
-There should be only one @emph{some error} condition object: the one predefined by @value{PACKAGE}.
-
 All the following definitions are accessible from the header file @file{cctemplate.h}.
 
 
-@deftp {Struct Typedef} cct_descriptor_some_error_t
-Structure type representing the descriptor for @emph{some error} condition objects.  This descriptor
-has @objtype{cce_descriptor_runtime_error_t} as parent descriptor.
+@CCEDescriptorTypedef{cct,some_error,cce_descriptor_runtime_error_t}
+
+
+@deftp {Struct Typedef} @CCEConditionObjectType{cct,some_error}
+Type of data structure representing an exceptional--condition object.  It has the following public
+fields:
+
+@table @code
+@item int * data
+Some custom data.
+@end table
 @end deftp
 
 
-@deftp {Struct Typedef} cct_condition_some_error_t
-Structure type representing an @emph{some error} condition object.
-@end deftp
+@CCEConditionObjectNew{cct,some_error,{int the_data}}
 
 
-@deftypefun void cct_condition_init_some_error (cct_condition_some_error_t * @var{C})
-Initialise an already allocated condition object.  This function exists to allow sub--typing from
-@objtype{cct_condition_some_error_t}.
-@end deftypefun
+@CCEConditionObjectPredicate{cct,some_error}
 
 
-@deftypefun {cce_condition_t const *} cct_condition_new_some_error (void)
-Return a pointer to the statically allocated structure representing the single @emph{some error}
-condition object.
-@end deftypefun
-
-
-@deftypefun bool cct_condition_is_some_error (cce_condition_t const * @var{C})
-Return @ctrue{} if @var{C} is an @emph{some error} condition object; otherwise return @cfalse{}.
-@end deftypefun
-
-
-@deftypefun void {cce_descriptor_set_parent_to(cct_condition_some_error_t)} (cce_descriptor_t * @var{D})
-Configure the descriptor @var{D} so that its parent is the descriptor of the given
-exceptional--condition object--type.
-@end deftypefun
+@CCEConditionSubtypingFacilitiesFailing{cct,some_error,{int the_data}}
 
 @c page
 @node utils

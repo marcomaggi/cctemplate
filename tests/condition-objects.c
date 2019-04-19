@@ -7,7 +7,7 @@
 
 	Test file for condition objects.
 
-  Copyright (C) 2018 Marco Maggi <marco.maggi-ipsu@poste.it>
+  Copyright (C) 2018-2019 Marco Maggi <marco.maggi-ipsu@poste.it>
 
   See the COPYING file.
 */
@@ -40,8 +40,8 @@ test_1_1 (cce_destination_t upper_L)
     if (1) { fprintf(stderr, "%s: static message: %s\n", __func__, cce_condition_static_message(cce_condition(L))); }
 
     if (cce_location(inner_L)) {
-      cce_run_body_handlers_final(L);
-      cce_run_body_handlers_raise(inner_L, upper_L);
+      cce_run_catch_handlers_final(L);
+      cce_run_catch_handlers_raise(inner_L, upper_L);
     } else {
       cctests_assert(inner_L, cct_condition_is_some_error(cce_condition(L)));
       if (1) { fprintf(stderr, "%s: is a CCTemplate some error condition\n", __func__); }
@@ -56,7 +56,7 @@ test_1_1 (cce_destination_t upper_L)
       cce_run_body_handlers_final(inner_L);
     }
   } else {
-    cce_raise(L, cct_condition_new_some_error());
+    cce_raise(L, cct_condition_new_some_error(L, 99));
   }
 }
 
