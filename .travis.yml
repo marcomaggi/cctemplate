@@ -148,6 +148,7 @@ install:
   - ./meta/travis-ci/install-cctests.sh;
   - ./meta/travis-ci/install-ccmemory.sh;
   - ./meta/travis-ci/install-ccstructs.sh;
+  - ./meta/travis-ci/install-ccstrings.sh;
 
 #page
 #### build scripts
