@@ -7,7 +7,7 @@
 # script is run from the top directory of the build tree.
 
 PROGNAME="${0##*/}"
-VERSION=0.1.0-devel.0
+VERSION=0.1.0-devel.1
 STEM="ccstrings-${VERSION}"
 ARCHIVE="${STEM}.tar.gz"
 SOURCE_URI="https://github.com/marcomaggi/ccstrings/archive/v${VERSION}.tar.gz"
