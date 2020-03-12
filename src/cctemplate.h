@@ -8,7 +8,7 @@
 	This is the public  header file of the library, defining  the public API.  It
 	must be included in all the code that uses the library.
 
-  Copyright (C) 2012, 2017-2019 Marco Maggi <marco.maggi-ipsu@poste.it>
+  Copyright (C) 2012, 2017-2019 Marco Maggi <mrc.mgg@gmail.com>
 
   This program is free  software: you can redistribute it and/or  modify it under the
   terms of the  GNU Lesser General Public  License as published by  the Free Software

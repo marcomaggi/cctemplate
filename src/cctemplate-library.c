@@ -7,7 +7,7 @@
 
 	This module implements library initialisation and version numbers inspection.
 
-  Copyright (C) 2012, 2014, 2017-2019 Marco Maggi <marco.maggi-ipsu@poste.it>
+  Copyright (C) 2012, 2014, 2017-2019 Marco Maggi <mrc.mgg@gmail.com>
 
   This program is free  software: you can redistribute it and/or  modify it under the
   terms of the  GNU Lesser General Public  License as published by  the Free Software
