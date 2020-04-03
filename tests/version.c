@@ -7,7 +7,7 @@
 
 	Test file for version functions.
 
-  Copyright (C) 2012, 2017, 2018 Marco Maggi <mrc.mgg@gmail.com>
+  Copyright (C) 2012, 2017, 2018, 2020 Marco Maggi <mrc.mgg@gmail.com>
 
   See the COPYING file.
 */
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 
 int
-main (int argc CCT_UNUSED, char const * const argv[] CCT_UNUSED)
+main (int argc CCLIB_UNUSED, char const * const argv[] CCLIB_UNUSED)
 {
   cct_library_init();
 

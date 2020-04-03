@@ -7,7 +7,7 @@
 
 	This module defines the exceptional-condition object-types for this library.
 
-  Copyright (C) 2018, 2019 Marco Maggi <mrc.mgg@gmail.com>
+  Copyright (C) 2018, 2019, 2020 Marco Maggi <mrc.mgg@gmail.com>
 
   This program is free  software: you can redistribute it and/or  modify it under the
   terms of the  GNU Lesser General Public  License as published by  the Free Software
@@ -78,7 +78,7 @@ cct_condition_delete_some_error (cce_condition_t * _C)
 }
 
 char const *
-cct_condition_static_message_some_error (cce_condition_t const * C CCE_UNUSED)
+cct_condition_static_message_some_error (cce_condition_t const * C CCLIB_UNUSED)
 {
   return "Error-1 exceptional condition";
 }

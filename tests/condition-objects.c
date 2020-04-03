@@ -7,7 +7,7 @@
 
 	Test file for condition objects.
 
-  Copyright (C) 2018-2019 Marco Maggi <mrc.mgg@gmail.com>
+  Copyright (C) 2018-2020 Marco Maggi <mrc.mgg@gmail.com>
 
   See the COPYING file.
 */
@@ -82,7 +82,7 @@ test_2_1 (cce_destination_t upper_L)
     } else {
       cctests_assert(inner_L, my_condition_is_some_error_subtype(cce_condition(L)));
       if (1) {
-	CCE_PC(my_condition_some_error_subtype_t, C, cce_condition(L));
+	CCLIB_PC(my_condition_some_error_subtype_t, C, cce_condition(L));
 	fprintf(stderr, "%s: is a subtype of CCTemplate some error, data=%d\n", __func__, *(C->data));
       }
 

@@ -7,7 +7,7 @@
 
 	Body definitions of a subtype of "some error".
 
-  Copyright (C) 2018, 2019 Marco Maggi <mrc.mgg@gmail.com>
+  Copyright (C) 2018, 2019, 2020 Marco Maggi <mrc.mgg@gmail.com>
 
   See the COPYING file.
 */
@@ -56,9 +56,9 @@ my_condition_final_some_error_subtype (cce_condition_t * _C)
    "cce_condition_final()" is applied  to the argument C.  Here we  finalise only the
    fields of this type leaving untouched the fields of the parent type. */
 {
-  CCT_PC(my_condition_some_error_subtype_t, C, _C);
+  CCLIB_PC(my_condition_some_error_subtype_t, C, _C);
   *(C->data) = 0;
-  free(C->data);
+  ccmem_std_free(C->data);
   if (1) { fprintf(stderr, "%s: finalised %p\n", __func__, (void*)C); }
 }
 
@@ -68,14 +68,14 @@ my_condition_delete_some_error_subtype (cce_condition_t * _C)
    "cce_condition_delete()" to the argument C.   Here we release memory allocated for
    the condition object. */
 {
-  CCT_PC(my_condition_some_error_subtype_t, C, _C);
+  CCLIB_PC(my_condition_some_error_subtype_t, C, _C);
 
-  free(C);
+  ccmem_std_free(C);
   if (1) { fprintf(stderr, "%s: deleted %p\n", __func__, (void*)C); }
 }
 
 char const *
-my_condition_static_message_some_error_subtype (cce_condition_t const * C CCT_UNUSED)
+my_condition_static_message_some_error_subtype (cce_condition_t const * C CCLIB_UNUSED)
 {
   return "some error subtype exceptional condition";
 }
@@ -99,7 +99,7 @@ my_condition_init_some_error_subtype (cce_destination_t L, my_condition_some_err
  */
 {
   cct_condition_init_some_error(L, &(C->some_error), 99);
-  C->data = cce_sys_malloc(L, sizeof(int));
+  C->data = ccmem_std_malloc(L, sizeof(int));
   *(C->data) = the_data;
   if (1) { fprintf(stderr, "%s: initialised %p\n", __func__, (void*)C); }
 }
@@ -119,12 +119,12 @@ my_condition_new_some_error_subtype (cce_destination_t upper_L, int the_data)
  */
 {
   cce_location_t	L[1];
-  cce_error_handler_t	C_H[1];
+  ccmem_error_handler_t	C_H[1];
 
   if (cce_location(L)) {
     cce_run_catch_handlers_raise(L, upper_L);
   } else {
-    my_condition_some_error_subtype_t * C = cce_sys_malloc_guarded(L, C_H, sizeof(my_condition_some_error_subtype_t));
+    my_condition_some_error_subtype_t * C = ccmem_std_malloc_guarded(L, C_H, sizeof(my_condition_some_error_subtype_t));
 
     cce_condition_init((cce_condition_t *) C, cce_descriptor_pointer(my_descriptor_some_error_subtype));
     my_condition_init_some_error_subtype(L, C, the_data);

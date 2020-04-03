@@ -8,7 +8,7 @@
 	This is the public  header file of the library, defining  the public API.  It
 	must be included in all the code that uses the library.
 
-  Copyright (C) 2012, 2017-2019 Marco Maggi <mrc.mgg@gmail.com>
+  Copyright (C) 2012, 2017-2020 Marco Maggi <mrc.mgg@gmail.com>
 
   This program is free  software: you can redistribute it and/or  modify it under the
   terms of the  GNU Lesser General Public  License as published by  the Free Software
@@ -25,57 +25,8 @@
 #ifndef CCTEMPLATE_H
 #define CCTEMPLATE_H 1
 
-
-/** --------------------------------------------------------------------
- ** Preliminary definitions.
- ** ----------------------------------------------------------------- */
-
 #ifdef __cplusplus
 extern "C" {
-#endif
-
-/* The  macro  CCT_UNUSED  indicates  that a  function,  function
-   argument or variable may potentially be unused. Usage examples:
-
-   static int unused_function (char arg) CCT_UNUSED;
-   int foo (char unused_argument CCT_UNUSED);
-   int unused_variable CCT_UNUSED;
-*/
-#ifdef __GNUC__
-#  define CCT_UNUSED		__attribute__((__unused__))
-#else
-#  define CCT_UNUSED		/* empty */
-#endif
-
-#ifndef __GNUC__
-#  define __attribute__(...)	/* empty */
-#endif
-
-/* I found  the following chunk on  the Net.  (Marco Maggi;  Sun Feb 26,
-   2012) */
-#if defined _WIN32 || defined __CYGWIN__
-#  ifdef BUILDING_DLL
-#    ifdef __GNUC__
-#      define cct_decl		__attribute__((__dllexport__)) extern
-#    else
-#      define cct_decl		__declspec(dllexport) extern
-#    endif
-#  else
-#    ifdef __GNUC__
-#      define cct_decl		__attribute__((__dllimport__)) extern
-#    else
-#      define cct_decl		__declspec(dllimport) extern
-#    endif
-#  endif
-#  define cct_private_decl	extern
-#else
-#  if __GNUC__ >= 4
-#    define cct_decl		__attribute__((__visibility__("default"))) extern
-#    define cct_private_decl	__attribute__((__visibility__("hidden")))  extern
-#  else
-#    define cct_decl		extern
-#    define cct_private_decl	extern
-#  endif
 #endif
 
 
@@ -112,26 +63,24 @@ extern "C" {
  ** Constants and preprocessor macros.
  ** ----------------------------------------------------------------- */
 
-#define CCT_PC(POINTER_TYPE, POINTER_NAME, EXPRESSION)	\
-  POINTER_TYPE * POINTER_NAME = (POINTER_TYPE *) (EXPRESSION)
 
 
 /** --------------------------------------------------------------------
  ** Version functions.
  ** ----------------------------------------------------------------- */
 
-cct_decl char const *	cct_version_string		(void);
-cct_decl int		cct_version_interface_current	(void);
-cct_decl int		cct_version_interface_revision	(void);
-cct_decl int		cct_version_interface_age	(void);
+cclib_decl char const *	cct_version_string		(void);
+cclib_decl int		cct_version_interface_current	(void);
+cclib_decl int		cct_version_interface_revision	(void);
+cclib_decl int		cct_version_interface_age	(void);
 
 
 /** --------------------------------------------------------------------
  ** Library initialisation.
  ** ----------------------------------------------------------------- */
 
-cct_decl void cct_library_init (void)
-  __attribute__((__constructor__));
+cclib_decl void cct_library_init (void)
+  CCLIB_FUNC_ATTRIBUTE_CONSTRUCTOR;
 
 
 /** --------------------------------------------------------------------
@@ -150,19 +99,21 @@ struct cct_condition_some_error_t {
   int *				data;
 };
 
-extern void cce_descriptor_set_parent_to(cct_descriptor_some_error_t) (cce_descriptor_t * D)
-  __attribute__((__nonnull__(1)));
+cclib_decl void cce_descriptor_set_parent_to(cct_descriptor_some_error_t) (cce_descriptor_t * D)
+  CCLIB_FUNC_ATTRIBUTE_NONNULL(1);
 
 /* ------------------------------------------------------------------ */
 
-extern void cct_condition_init_some_error (cce_destination_t L, cct_condition_some_error_t * C, int the_data)
-  __attribute__((__nonnull__(1)));
+cclib_decl void cct_condition_init_some_error (cce_destination_t L, cct_condition_some_error_t * C, int the_data)
+  CCLIB_FUNC_ATTRIBUTE_NONNULL(1);
 
-extern cce_condition_t const * cct_condition_new_some_error (cce_destination_t L, int the_data)
-  __attribute__((__nonnull__(1),__returns_nonnull__));
+cclib_decl cce_condition_t const * cct_condition_new_some_error (cce_destination_t L, int the_data)
+  CCLIB_FUNC_ATTRIBUTE_NONNULL(1)
+  CCLIB_FUNC_ATTRIBUTE_RETURNS_NONNULL;
 
-extern bool cct_condition_is_some_error (cce_condition_t const * C)
-  __attribute__((__pure__,__nonnull__(1)));
+cclib_decl bool cct_condition_is_some_error (cce_condition_t const * C)
+  CCLIB_FUNC_ATTRIBUTE_PURE
+  CCLIB_FUNC_ATTRIBUTE_NONNULL(1);
 
 
 

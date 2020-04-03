@@ -10,10 +10,10 @@ This is  a template project, to  be used as starting  point for packages
 that install a C language library.
 
 The  library  targets  POSIX  systems.   This  package  depends  on  the
-packages:  CCExceptions,  at least  version  0.9.0;  CCMemory, at  least
-version 0.2.2;  CCStructs, at  least version  0.3.0; CCStrings  at least
+packages:  CCExceptions, at  least  version 0.10.0;  CCMemory, at  least
+version 0.3.0;  CCStructs, at  least version  0.4.0; CCStrings  at least
 version 0.1.0.   To run the  test suite:  this package depends  upon the
-package CCTests, at least version 0.4.1.
+package CCTests, at least version 0.5.0.
 
 The package uses the GNU Autotools and it is tested, using Travis CI, on
 both Ubuntu GNU+Linux  systems and OS X systems.  The  package relies on
@@ -21,7 +21,7 @@ both Ubuntu GNU+Linux  systems and OS X systems.  The  package relies on
 
 ## License
 
-Copyright (c) 2012, 2015-2019 Marco Maggi<br/>
+Copyright (c) 2012, 2015-2020 Marco Maggi<br/>
 `mrc.mgg@gmail.com`<br/>
 All rights reserved.
 

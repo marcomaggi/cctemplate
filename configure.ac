@@ -57,6 +57,8 @@ AC_HEADER_STDC
 AC_HEADER_SYS_WAIT
 AC_CHECK_HEADERS([assert.h stdint.h strings.h errno.h stddef.h unistd.h])
 
+CCLIB_CONFIG_SETUP
+
 dnl AC_CHECK_SIZEOF(void *)
 dnl AC_C_CONST
 dnl AC_C_INLINE
@@ -103,11 +105,11 @@ dnl AC_CACHE_SAVE
 PKG_PREREQ([0.29])
 PKG_INSTALLDIR
 MMUX_CHECK_PKG_CONFIG_MACROS
-PKG_CHECK_MODULES([CCEXCEPTIONS],[ccexceptions >= 0.8.0])
-PKG_CHECK_MODULES([CCMEMORY],[ccmemory >= 0.2.1])
+PKG_CHECK_MODULES([CCEXCEPTIONS],[ccexceptions >= 0.10.0])
+PKG_CHECK_MODULES([CCMEMORY],[ccmemory >= 0.3.0])
 PKG_CHECK_MODULES([CCSTRUCTS],[ccstructs >= 0.3.0])
 PKG_CHECK_MODULES([CCSTRINGS],[ccstrings >= 0.1.0])
-PKG_CHECK_MODULES([CCTESTS],[cctests >= 0.3.0],,[AC_MSG_WARN([package CCTests not found])])
+PKG_CHECK_MODULES([CCTESTS],[cctests >= 0.5.0],,[AC_MSG_WARN([package CCTests not found])])
 
 AM_CONDITIONAL([MMUX_TESTING_ENABLED],[test -n "$CCTESTS_LIBS"])
 
